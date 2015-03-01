@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23350EA71AA2C6C200485199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23350EA61AA2C6C200485199 /* AppDelegate.swift */; };
+		23350EA91AA2C6C200485199 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23350EA81AA2C6C200485199 /* ViewController.swift */; };
+		23350EAB1AA2C6C200485199 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23350EAA1AA2C6C200485199 /* Images.xcassets */; };
+		23350EAE1AA2C6C200485199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23350EAC1AA2C6C200485199 /* Main.storyboard */; };
+		23350EBA1AA2C6C200485199 /* SonosControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23350EB91AA2C6C200485199 /* SonosControllerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		23350EB41AA2C6C200485199 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23350E991AA2C6C200485199 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23350EA01AA2C6C200485199;
+			remoteInfo = SonosController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		23350EA11AA2C6C200485199 /* SonosController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SonosController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		23350EA51AA2C6C200485199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23350EA61AA2C6C200485199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23350EA81AA2C6C200485199 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23350EAA1AA2C6C200485199 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		23350EAD1AA2C6C200485199 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23350EB31AA2C6C200485199 /* SonosControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SonosControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23350EB81AA2C6C200485199 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23350EB91AA2C6C200485199 /* SonosControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SonosControllerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23350E9E1AA2C6C200485199 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23350EB01AA2C6C200485199 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23350E981AA2C6C200485199 = {
+			isa = PBXGroup;
+			children = (
+				23350EA31AA2C6C200485199 /* SonosController */,
+				23350EB61AA2C6C200485199 /* SonosControllerTests */,
+				23350EA21AA2C6C200485199 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		23350EA21AA2C6C200485199 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23350EA11AA2C6C200485199 /* SonosController.app */,
+				23350EB31AA2C6C200485199 /* SonosControllerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23350EA31AA2C6C200485199 /* SonosController */ = {
+			isa = PBXGroup;
+			children = (
+				23350EA61AA2C6C200485199 /* AppDelegate.swift */,
+				23350EA81AA2C6C200485199 /* ViewController.swift */,
+				23350EAA1AA2C6C200485199 /* Images.xcassets */,
+				23350EAC1AA2C6C200485199 /* Main.storyboard */,
+				23350EA41AA2C6C200485199 /* Supporting Files */,
+			);
+			path = SonosController;
+			sourceTree = "<group>";
+		};
+		23350EA41AA2C6C200485199 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23350EA51AA2C6C200485199 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		23350EB61AA2C6C200485199 /* SonosControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				23350EB91AA2C6C200485199 /* SonosControllerTests.swift */,
+				23350EB71AA2C6C200485199 /* Supporting Files */,
+			);
+			path = SonosControllerTests;
+			sourceTree = "<group>";
+		};
+		23350EB71AA2C6C200485199 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23350EB81AA2C6C200485199 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23350EA01AA2C6C200485199 /* SonosController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23350EBD1AA2C6C200485199 /* Build configuration list for PBXNativeTarget "SonosController" */;
+			buildPhases = (
+				23350E9D1AA2C6C200485199 /* Sources */,
+				23350E9E1AA2C6C200485199 /* Frameworks */,
+				23350E9F1AA2C6C200485199 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SonosController;
+			productName = SonosController;
+			productReference = 23350EA11AA2C6C200485199 /* SonosController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23350EB21AA2C6C200485199 /* SonosControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23350EC01AA2C6C200485199 /* Build configuration list for PBXNativeTarget "SonosControllerTests" */;
+			buildPhases = (
+				23350EAF1AA2C6C200485199 /* Sources */,
+				23350EB01AA2C6C200485199 /* Frameworks */,
+				23350EB11AA2C6C200485199 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23350EB51AA2C6C200485199 /* PBXTargetDependency */,
+			);
+			name = SonosControllerTests;
+			productName = SonosControllerTests;
+			productReference = 23350EB31AA2C6C200485199 /* SonosControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		23350E991AA2C6C200485199 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Nicolas Langley";
+				TargetAttributes = {
+					23350EA01AA2C6C200485199 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					23350EB21AA2C6C200485199 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 23350EA01AA2C6C200485199;
+					};
+				};
+			};
+			buildConfigurationList = 23350E9C1AA2C6C200485199 /* Build configuration list for PBXProject "SonosController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 23350E981AA2C6C200485199;
+			productRefGroup = 23350EA21AA2C6C200485199 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23350EA01AA2C6C200485199 /* SonosController */,
+				23350EB21AA2C6C200485199 /* SonosControllerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		23350E9F1AA2C6C200485199 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23350EAB1AA2C6C200485199 /* Images.xcassets in Resources */,
+				23350EAE1AA2C6C200485199 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23350EB11AA2C6C200485199 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23350E9D1AA2C6C200485199 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23350EA91AA2C6C200485199 /* ViewController.swift in Sources */,
+				23350EA71AA2C6C200485199 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23350EAF1AA2C6C200485199 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23350EBA1AA2C6C200485199 /* SonosControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23350EB51AA2C6C200485199 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23350EA01AA2C6C200485199 /* SonosController */;
+			targetProxy = 23350EB41AA2C6C200485199 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		23350EAC1AA2C6C200485199 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23350EAD1AA2C6C200485199 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		23350EBB1AA2C6C200485199 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		23350EBC1AA2C6C200485199 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		23350EBE1AA2C6C200485199 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SonosController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		23350EBF1AA2C6C200485199 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SonosController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		23350EC11AA2C6C200485199 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SonosControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonosController.app/Contents/MacOS/SonosController";
+			};
+			name = Debug;
+		};
+		23350EC21AA2C6C200485199 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SonosControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonosController.app/Contents/MacOS/SonosController";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23350E9C1AA2C6C200485199 /* Build configuration list for PBXProject "SonosController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23350EBB1AA2C6C200485199 /* Debug */,
+				23350EBC1AA2C6C200485199 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23350EBD1AA2C6C200485199 /* Build configuration list for PBXNativeTarget "SonosController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23350EBE1AA2C6C200485199 /* Debug */,
+				23350EBF1AA2C6C200485199 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		23350EC01AA2C6C200485199 /* Build configuration list for PBXNativeTarget "SonosControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23350EC11AA2C6C200485199 /* Debug */,
+				23350EC21AA2C6C200485199 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 23350E991AA2C6C200485199 /* Project object */;
+}
