@@ -13,6 +13,7 @@
 		23350ECF1AA2C97700485199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23350ECB1AA2C97700485199 /* Main.storyboard */; };
 		23350ED01AA2C97700485199 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23350ECD1AA2C97700485199 /* Images.xcassets */; };
 		23350ED11AA2C97700485199 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23350ECE1AA2C97700485199 /* Info.plist */; };
+		23C722A61AD879FC003AD637 /* sonos-icon-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C722A51AD879FC003AD637 /* sonos-icon-round@2x.png */; };
 		23E60C781AD7A26500DC3165 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E60C711AD7A26500DC3165 /* SonosController.m */; };
 		23E60C791AD7A26500DC3165 /* SonosDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E60C731AD7A26500DC3165 /* SonosDiscover.m */; };
 		23E60C7A1AD7A26500DC3165 /* SonosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E60C751AD7A26500DC3165 /* SonosManager.m */; };
@@ -43,6 +44,7 @@
 		23350ECD1AA2C97700485199 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23350ECE1AA2C97700485199 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23350ED21AA2C9AA00485199 /* SonosController-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SonosController-Bridging-Header.h"; sourceTree = "<group>"; };
+		23C722A51AD879FC003AD637 /* sonos-icon-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sonos-icon-round@2x.png"; sourceTree = "<group>"; };
 		23E60C701AD7A26500DC3165 /* SonosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosController.h; sourceTree = "<group>"; };
 		23E60C711AD7A26500DC3165 /* SonosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosController.m; sourceTree = "<group>"; };
 		23E60C721AD7A26500DC3165 /* SonosDiscover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosDiscover.h; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		23350ECA1AA2C97700485199 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				23C722A51AD879FC003AD637 /* sonos-icon-round@2x.png */,
 				23350ECB1AA2C97700485199 /* Main.storyboard */,
 				23350ECD1AA2C97700485199 /* Images.xcassets */,
 				23350ECE1AA2C97700485199 /* Info.plist */,
@@ -269,6 +272,7 @@
 				23350ECF1AA2C97700485199 /* Main.storyboard in Resources */,
 				23350ED01AA2C97700485199 /* Images.xcassets in Resources */,
 				23350ED11AA2C97700485199 /* Info.plist in Resources */,
+				23C722A61AD879FC003AD637 /* sonos-icon-round@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

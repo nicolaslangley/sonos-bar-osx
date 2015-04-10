@@ -16,42 +16,74 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menu: NSMenu = NSMenu()
     var playMenuItem: NSMenuItem = NSMenuItem()
     var pauseMenuItem: NSMenuItem = NSMenuItem()
+    var nextMenuItem: NSMenuItem = NSMenuItem()
+    var prevMenuItem: NSMenuItem = NSMenuItem()
+    var quitMenuItem: NSMenuItem = NSMenuItem()
+    
     var sonosDevices: [SonosController] = []
     
-    override func awakeFromNib() {
+    // Initialization of application
+    override init() {
+        super.init()
+        
         // Add statusBarItem to status bar
         statusBarItem = statusBar.statusItemWithLength(-1)
         statusBarItem.menu = menu
-        statusBarItem.title = "SC"
+        statusBarItem.image = NSImage(named: "sonos-icon-round")
         
-        // Add menuItem to menu
+        // Add play option to menu
         playMenuItem.title = "Play"
-        playMenuItem.enabled = true
-        playMenuItem.action = Selector("playPressed")
+        playMenuItem.action = "playPressed:"
         menu.addItem(playMenuItem)
         
-        // Add menuItem to menu
+        // Add pause option to menu
         pauseMenuItem.title = "Pause"
-        pauseMenuItem.enabled = true
-        pauseMenuItem.action = Selector("pausePressed")
+        pauseMenuItem.action = "pausePressed:"
         menu.addItem(pauseMenuItem)
         
-        // TODO: use SonosManager for discovering and handling devices
+        // Add next option to menu
+        nextMenuItem.title = "Next"
+        nextMenuItem.action = "nextPressed:"
+        menu.addItem(nextMenuItem)
         
-        SonosDiscover.discoverControllers {
-            (devices, error) -> Void
-            in
-            for device in devices {
-                var controller: SonosController = SonosController.alloc()
-                controller.ip = device["ip"] as! String
-                controller.port = Int32((device["port"] as! String).toInt()!)
-                self.sonosDevices.append(controller)
-            }
-        }
+        // Add previous option to menu
+        prevMenuItem.title = "Previous"
+        prevMenuItem.action = "prevPressed:"
+        menu.addItem(prevMenuItem)
+        
+        // Add quit option to menu
+        quitMenuItem.title = "Quit"
+        quitMenuItem.action = "quitPressed:"
+        menu.addItem(quitMenuItem)
+        
         
     }
     
-    @objc func playPressed()
+    func applicationWillFinishLaunching(aNotification: NSNotification)
+    {
+        // TODO: use SonosManager for discovering and handling devices?
+        SonosDiscover.discoverControllers {
+            (devices, error) -> Void
+            in
+            if (devices == nil) {
+                println("No devices found")
+            } else {
+                for device in devices {
+                    var controller: SonosController = SonosController.alloc()
+                    controller.ip = device["ip"] as! String
+                    controller.port = Int32((device["port"] as! String).toInt()!)
+                    self.sonosDevices.append(controller)
+                }
+            }
+        }
+    }
+    
+    // MARK: Menu Choice Handling
+    
+    /**
+    Handle pressing of play option in status bar menu
+    */
+    func playPressed(sender: AnyObject)
     {
         for device in self.sonosDevices {
             device.play(nil, completion: {
@@ -63,7 +95,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @objc func pausePressed()
+    /**
+    Handle pressing of pause option in status bar menu
+    */
+    func pausePressed(sender: AnyObject)
     {
         for device in self.sonosDevices {
             device.pause({
@@ -74,15 +109,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             })
         }
     }
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+    
+    /**
+    Handle pressing of next option in status bar menu
+    */
+    func nextPressed(sender: AnyObject)
+    {
+        for device in self.sonosDevices {
+            device.next({
+                (response, error) -> Void
+                in
+                println(response)
+                println(error)
+            })
+        }
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+    
+    /**
+    Handle pressing of previous option in status bar menu
+    */
+    func prevPressed(sender: AnyObject)
+    {
+        for device in self.sonosDevices {
+            device.previous({
+                (response, error) -> Void
+                in
+                println(response)
+                println(error)
+            })
+        }
     }
-
+    
+    /**
+    Handle pressing of quit option in status bar menu
+    */
+    func quitPressed(sender: AnyObject)
+    {
+        println("Application Shutting Down...")
+        NSApplication.sharedApplication().terminate(self)
+    }
 
 }
 
