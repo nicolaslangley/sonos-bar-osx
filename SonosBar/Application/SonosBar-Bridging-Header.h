@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Nicolas Langley. All rights reserved.
 //
 
-#ifndef SonosController_SonosController_Bridging_Header_h
-#define SonosController_SonosController_Bridging_Header_h
+#ifndef SonosBar_Bridging_Header_h
+#define SonosBar_Bridging_Header_h
 
 #import "SonosController.h"
 #import "SonosManager.h"
