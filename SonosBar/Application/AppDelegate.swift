@@ -11,6 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    // MARK: Global Variables
+    
     var statusBar = NSStatusBar.systemStatusBar()
     var statusBarItem: NSStatusItem = NSStatusItem()
     var popover: NSPopover = NSPopover()
@@ -18,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var sonosDevices: [SonosController] = []
     var currentDevice: SonosController?
+    
+    // MARK: Interface Functions
     
     func applicationWillFinishLaunching(aNotification: NSNotification)
     {

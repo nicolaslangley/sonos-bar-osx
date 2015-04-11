@@ -11,6 +11,7 @@ import AppKit
 
 class PopupViewController: NSViewController {
     
+    // MARK: Global Variables
     // Global reference to view components
     var prevButton: NSButton!
     var nextButton: NSButton!
@@ -21,6 +22,8 @@ class PopupViewController: NSViewController {
     var currentDevice: SonosController? = nil
     var sonosDevices: [SonosController]?
 
+    // MARK: Interface Functions
+    
     override func loadView() {
         // Create the view
         view = NSView()
@@ -187,6 +190,8 @@ class PopupViewController: NSViewController {
             }
         })
     }
+    
+    // MARK: Display Functions
     
     /**
     Update display of current track info*You
