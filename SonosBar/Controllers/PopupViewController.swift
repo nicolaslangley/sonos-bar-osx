@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AppKit
 
 class PopupViewController: NSViewController {
     
@@ -17,7 +18,8 @@ class PopupViewController: NSViewController {
     var trackInfoLabel: NSTextField!
     
     // Global reference to current device
-    var currentDevice: SonosController!
+    var currentDevice: SonosController? = nil
+    var sonosDevices: [SonosController]?
 
     override func loadView() {
         // Create the view
@@ -74,6 +76,16 @@ class PopupViewController: NSViewController {
         quitButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(quitButton)
         
+        let sonosAppButton = NSButton()
+        sonosAppButton.title = "Sonos App"
+        sonosAppButton.target = self
+        sonosAppButton.action = "sonosAppPressed:"
+        sonosAppButton.image = NSImage(named: "sonos-app-button")
+        sonosAppButton.imagePosition = NSCellImagePosition.ImageOnly
+        sonosAppButton.bordered = false
+        sonosAppButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(sonosAppButton)
+        
         
         // Create Label
         let trackInfoLabel = NSTextField()
@@ -125,25 +137,38 @@ class PopupViewController: NSViewController {
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["quitButton":quitButton]))
+        // Sonos app button constraints
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:[sonosAppButton(20.0)]-(5)-|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["sonosAppButton":sonosAppButton]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:[sonosAppButton(20.0)]-(5)-|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["sonosAppButton":sonosAppButton]))
         
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Get current device from appDelegate
         let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         currentDevice = appDelegate.currentDevice
-        
+        sonosDevices = appDelegate.sonosDevices
     }
     
     override func viewWillAppear() {
         // View has been load into memory and is about to be added to view hierarchy
         if (currentDevice == nil) {
+            // There are no devices
+            self.trackInfoLabel.stringValue = "No Devices Found"
             return
         }
-        currentDevice.playbackStatus({
+        currentDevice!.playbackStatus({
             (playing, response, error)
             in
             if (error != nil) {
@@ -163,8 +188,6 @@ class PopupViewController: NSViewController {
         })
     }
     
-    // MARK: Handling of view buttons
-    
     /**
     Update display of current track info*You
     */
@@ -173,12 +196,14 @@ class PopupViewController: NSViewController {
         if (currentDevice == nil) {
             return
         }
-        currentDevice.trackInfo({
+        currentDevice!.trackInfo({
             (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
             in
             self.trackInfoLabel.stringValue = "\(title) - \(artist)"
         })
     }
+    
+    // MARK: View Button Handlers
     
     /**
     Handle pressing of toggle playback in status bar menu
@@ -188,7 +213,7 @@ class PopupViewController: NSViewController {
         if (currentDevice == nil) {
             return
         }
-        currentDevice.playbackStatus({
+        currentDevice!.playbackStatus({
             (playing, response, error)
             in
             if (error != nil) {
@@ -196,7 +221,7 @@ class PopupViewController: NSViewController {
             } else {
                 // Playback status was retrieved
                 if (playing) {
-                    self.currentDevice.pause({
+                    self.currentDevice!.pause({
                         (response, error) -> Void
                         in
                         if (error != nil) {
@@ -209,7 +234,7 @@ class PopupViewController: NSViewController {
                         }
                     })
                 } else {
-                    self.currentDevice.play(nil, completion: {
+                    self.currentDevice!.play(nil, completion: {
                         (response, error) -> Void
                         in
                         if (error != nil) {
@@ -234,7 +259,7 @@ class PopupViewController: NSViewController {
         if (currentDevice == nil) {
             return
         }
-        currentDevice.next({
+        currentDevice!.next({
             (response, error) -> Void
             in
             if (error != nil) {
@@ -254,7 +279,7 @@ class PopupViewController: NSViewController {
         if (currentDevice == nil) {
             return
         }
-        currentDevice.previous({
+        currentDevice!.previous({
             (response, error) -> Void
             in
             if (error != nil) {
@@ -264,6 +289,16 @@ class PopupViewController: NSViewController {
             }
             println(response)
         })
+    }
+    
+    /**
+    Handle pressing of sonos app button
+    */
+    func sonosAppPressed(sender: AnyObject)
+    {
+        // Launch Sonos Controller app
+        NSWorkspace.sharedWorkspace().launchAppWithBundleIdentifier("com.sonos.macController",
+            options: NSWorkspaceLaunchOptions.Default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
     }
     
     /**

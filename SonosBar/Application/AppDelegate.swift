@@ -14,20 +14,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBar = NSStatusBar.systemStatusBar()
     var statusBarItem: NSStatusItem = NSStatusItem()
     var popover: NSPopover = NSPopover()
+    var popoverTransiencyMonitor: AnyObject? = nil
     
     var sonosDevices: [SonosController] = []
-    var currentDevice: SonosController = SonosController()
+    var currentDevice: SonosController?
     
     func applicationWillFinishLaunching(aNotification: NSNotification)
     {
         println("Application will finish launching started")
         // Find the available Sonos devices
+        self.deviceSetup()
+    }
+    
+    // MARK: Setup Functions
+    
+    /**
+    Search for Sonos devices and perform setup
+    */
+    func deviceSetup()
+    {
+        println("Searching for Sonos devices")
         SonosDiscover.discoverControllers {
             (devices, error) -> Void
             in
-            if (devices == nil || error != nil) {
+            if (devices == nil) {
                 println("No devices found")
-                println(error)
+                // Set up the menubar
+                self.menuBarSetup()
+                self.currentDevice = nil
             } else {
                 for device in devices {
                     if ((device["name"] as! String) == "BRIDGE") {
@@ -49,6 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                     println("Setting current device: \(deviceName)")
                                     self.currentDevice = controller
                                 }
+                                // Set up the menubar
                                 self.menuBarSetup()
                             }
                         })
@@ -57,7 +72,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
-        
     }
     
     /**
@@ -79,8 +93,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         popover.contentViewController = PopupViewController()
     }
     
+    // MARK: Popover Functions
+    
     /**
-    Handle opening/closing of popover
+    Handle opening/closing of popover on button press
     */
     func handlePopover(sender: AnyObject)
     {
@@ -88,9 +104,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if popover.shown {
                 popover.close()
             } else {
-                popover.showRelativeToRect(NSZeroRect, ofView: statusButton, preferredEdge: NSMinYEdge)
+                self.openPopover(sender)
             }
         }
+    }
+    
+    /**
+    Open popover and add transiency monitor
+    */
+    func openPopover(sender: AnyObject)
+    {
+        if let statusButton = statusBarItem.button {
+            popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDownMask|NSEventMask.RightMouseDownMask,
+                handler: {(event) -> Void
+                    in
+                    self.closePopover(sender)
+            })
+            popover.showRelativeToRect(NSZeroRect, ofView: statusButton, preferredEdge: NSMinYEdge)
+        }
+    }
+    
+    /**
+    Closing of popover and remove transiency monitor
+    */
+    func closePopover(sender: AnyObject)
+    {
+        if (popoverTransiencyMonitor != nil) {
+            NSEvent.removeMonitor(popoverTransiencyMonitor!)
+            popoverTransiencyMonitor = nil
+        }
+        self.popover.close()
     }
 }
 

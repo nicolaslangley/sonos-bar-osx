@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2303D06E1AD9AC0900D89819 /* sonos-app-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2303D06D1AD9AC0900D89819 /* sonos-app-button.png */; };
 		23354AAC1AD8830400B23314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A981AD8830400B23314 /* AppDelegate.swift */; };
 		23354AAD1AD8830400B23314 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9B1AD8830400B23314 /* PopupViewController.swift */; };
 		23354AAE1AD8830400B23314 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9F1AD8830400B23314 /* SonosController.m */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		0BEC11E1C5B092FC6661141E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		11539C02C406E767733A578D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2303D06D1AD9AC0900D89819 /* sonos-app-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sonos-app-button.png"; sourceTree = "<group>"; };
 		23350EA11AA2C6C200485199 /* SonosBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SonosBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23350EB31AA2C6C200485199 /* SonosBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SonosBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23354A981AD8830400B23314 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		23354AA61AD8830400B23314 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2303D06D1AD9AC0900D89819 /* sonos-app-button.png */,
 				2344DAE61AD9064100B45612 /* quit-button.png */,
 				2365F4E51AD8F93C008A9BE9 /* next-button.png */,
 				2365F4E61AD8F93C008A9BE9 /* pause-button.png */,
@@ -284,6 +287,7 @@
 				2344DAE71AD9064100B45612 /* quit-button.png in Resources */,
 				23354AB21AD8830400B23314 /* Main.storyboard in Resources */,
 				2365F4EA1AD8F93C008A9BE9 /* play-button.png in Resources */,
+				2303D06E1AD9AC0900D89819 /* sonos-app-button.png in Resources */,
 				23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */,
 				2365F4E91AD8F93C008A9BE9 /* pause-button.png in Resources */,
 				2365F4E81AD8F93C008A9BE9 /* next-button.png in Resources */,
