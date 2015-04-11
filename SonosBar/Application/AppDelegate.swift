@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var sonosDevices: [SonosController] = []
     var currentDevice: SonosController = SonosController()
+    var popover: NSPopover = NSPopover()
     
     // Initialization of application
     override init() {
@@ -29,34 +30,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Add statusBarItem to status bar
         statusBarItem = statusBar.statusItemWithLength(-1)
-        statusBarItem.menu = menu
+
         statusBarItem.image = NSImage(named: "sonos-icon-round")
+        if let statusButton = statusBarItem.button {
+            statusButton.action = "handlePopover:"
+        }
         
-        // Add track info to menu
-        infoMenuItem.title = "Track Info"
-        menu.addItem(infoMenuItem)
-        
-        // Add playback toggle option to menu
-        playbackMenuItem.title = "Play"
-        playbackMenuItem.action = "playbackTogglePressed:"
-        menu.addItem(playbackMenuItem)
-        
-        // Add next option to menu
-        nextMenuItem.title = "Next"
-        nextMenuItem.action = "nextPressed:"
-        menu.addItem(nextMenuItem)
-        
-        // Add previous option to menu
-        prevMenuItem.title = "Previous"
-        prevMenuItem.action = "prevPressed:"
-        menu.addItem(prevMenuItem)
-        
-        // Add quit option to menu
-        quitMenuItem.title = "Quit"
-        quitMenuItem.action = "quitPressed:"
-        menu.addItem(quitMenuItem)
-        
-        
+        // Create popup for info and controls
+        popover = NSPopover()
+        popover.behavior = .Transient
+        popover.contentViewController = PopupViewController()
     }
     
     func applicationWillFinishLaunching(aNotification: NSNotification)
@@ -67,7 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             in
             if (devices == nil) {
                 println("No devices found")
-                self.infoMenuItem.title = "No Devices Found"
             } else {
                 for device in devices {
                     if ((device["name"] as! String) == "BRIDGE") {
@@ -82,105 +64,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         (playing, response, error)
                         in
                         if (playing) {
+                            let deviceName = device["name"]
+                            println("Setting current device: \(deviceName)")
                             self.currentDevice = controller
-                            self.playbackMenuItem.title = "Pause"
-                            self.displayTrackInfo()
                         }
                     })
                     self.sonosDevices.append(controller)
                 }
             }
         }
-        
-        // Setup timer to continually update currently playing track
-        // Checks every 2 seconds
-        var timer = NSTimer.scheduledTimerWithTimeInterval(0.2,
-                                                           target: self,
-                                                           selector: "displayTrackInfo",
-                                                           userInfo: nil,
-                                                           repeats: true)
-    }
-    
-    // MARK: Menu Choice Handling
-    
-    /**
-    Update display of current track info*You
-    */
-    func displayTrackInfo()
-    {
-        currentDevice.trackInfo({
-            (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
-            in
-            self.infoMenuItem.title = "\(title) - \(artist)"
-        })
     }
     
     /**
-    Handle pressing of toggle playback in status bar menu
+    Handle opening/closing of popover
     */
-    func playbackTogglePressed(sender: AnyObject)
+    func handlePopover(sender: AnyObject)
     {
-        currentDevice.playbackStatus({
-            (playing, response, error)
-            in
-            if (playing) {
-                self.currentDevice.pause({
-                    (response, error) -> Void
-                    in
-                    println(response)
-                    println(error)
-                })
-                self.playbackMenuItem.title = "Play"
-                self.displayTrackInfo()
+        if let statusButton = statusBarItem.button {
+            if popover.shown {
+                popover.close()
             } else {
-                self.currentDevice.play(nil, completion: {
-                    (response, error) -> Void
-                    in
-                    println(response)
-                    println(error)
-                })
-                self.playbackMenuItem.title = "Pause"
-                self.displayTrackInfo()
+                popover.showRelativeToRect(NSZeroRect, ofView: statusButton, preferredEdge: NSMinYEdge)
             }
-        })
+        }
     }
-    
-    /**
-    Handle pressing of next option in status bar menu
-    */
-    func nextPressed(sender: AnyObject)
-    {
-        currentDevice.next({
-            (response, error) -> Void
-            in
-            println(response)
-            println(error)
-            self.displayTrackInfo()
-        })
-    }
-    
-    /**
-    Handle pressing of previous option in status bar menu
-    */
-    func prevPressed(sender: AnyObject)
-    {
-        currentDevice.previous({
-            (response, error) -> Void
-            in
-            println(response)
-            println(error)
-            self.displayTrackInfo()
-        })
-    }
-    
-    /**
-    Handle pressing of quit option in status bar menu
-    */
-    func quitPressed(sender: AnyObject)
-    {
-        println("Application Shutting Down...")
-        NSApplication.sharedApplication().terminate(self)
-    }
-
 }
 

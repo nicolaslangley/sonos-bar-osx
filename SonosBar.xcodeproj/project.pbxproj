@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23354AAC1AD8830400B23314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A981AD8830400B23314 /* AppDelegate.swift */; };
-		23354AAD1AD8830400B23314 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9B1AD8830400B23314 /* ViewController.swift */; };
+		23354AAD1AD8830400B23314 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9B1AD8830400B23314 /* PopupViewController.swift */; };
 		23354AAE1AD8830400B23314 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9F1AD8830400B23314 /* SonosController.m */; };
 		23354AAF1AD8830400B23314 /* SonosDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354AA11AD8830400B23314 /* SonosDiscover.m */; };
 		23354AB01AD8830400B23314 /* SonosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354AA31AD8830400B23314 /* SonosManager.m */; };
@@ -19,6 +19,10 @@
 		23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */; };
 		23354ABA1AD8831000B23314 /* SonosBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354AB81AD8831000B23314 /* SonosBarTests.swift */; };
 		23354ABB1AD8ABD900B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
+		2365F4E41AD8F646008A9BE9 /* prev-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E31AD8F646008A9BE9 /* prev-button.png */; };
+		2365F4E81AD8F93C008A9BE9 /* next-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E51AD8F93C008A9BE9 /* next-button.png */; };
+		2365F4E91AD8F93C008A9BE9 /* pause-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E61AD8F93C008A9BE9 /* pause-button.png */; };
+		2365F4EA1AD8F93C008A9BE9 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E71AD8F93C008A9BE9 /* play-button.png */; };
 		B996BDC194E0CDD89230DF0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA388C5113BCA8FBF8162A1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +43,7 @@
 		23350EB31AA2C6C200485199 /* SonosBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SonosBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		23354A981AD8830400B23314 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23354A991AD8830400B23314 /* SonosBar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SonosBar-Bridging-Header.h"; sourceTree = "<group>"; };
-		23354A9B1AD8830400B23314 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23354A9B1AD8830400B23314 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		23354A9E1AD8830400B23314 /* SonosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosController.h; sourceTree = "<group>"; };
 		23354A9F1AD8830400B23314 /* SonosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosController.m; sourceTree = "<group>"; };
 		23354AA01AD8830400B23314 /* SonosDiscover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosDiscover.h; sourceTree = "<group>"; };
@@ -54,6 +58,10 @@
 		23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sonos-icon-round@2x.png"; sourceTree = "<group>"; };
 		23354AB71AD8831000B23314 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23354AB81AD8831000B23314 /* SonosBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SonosBarTests.swift; sourceTree = "<group>"; };
+		2365F4E31AD8F646008A9BE9 /* prev-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prev-button.png"; sourceTree = "<group>"; };
+		2365F4E51AD8F93C008A9BE9 /* next-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-button.png"; sourceTree = "<group>"; };
+		2365F4E61AD8F93C008A9BE9 /* pause-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-button.png"; sourceTree = "<group>"; };
+		2365F4E71AD8F93C008A9BE9 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		FEA388C5113BCA8FBF8162A1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,7 +136,7 @@
 		23354A9A1AD8830400B23314 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				23354A9B1AD8830400B23314 /* ViewController.swift */,
+				23354A9B1AD8830400B23314 /* PopupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -159,6 +167,10 @@
 		23354AA61AD8830400B23314 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2365F4E51AD8F93C008A9BE9 /* next-button.png */,
+				2365F4E61AD8F93C008A9BE9 /* pause-button.png */,
+				2365F4E71AD8F93C008A9BE9 /* play-button.png */,
+				2365F4E31AD8F646008A9BE9 /* prev-button.png */,
 				23354AA71AD8830400B23314 /* Main.storyboard */,
 				23354AA91AD8830400B23314 /* Images.xcassets */,
 				23354AAA1AD8830400B23314 /* Info.plist */,
@@ -267,9 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				23354AB21AD8830400B23314 /* Main.storyboard in Resources */,
+				2365F4EA1AD8F93C008A9BE9 /* play-button.png in Resources */,
 				23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */,
+				2365F4E91AD8F93C008A9BE9 /* pause-button.png in Resources */,
+				2365F4E81AD8F93C008A9BE9 /* next-button.png in Resources */,
 				23354AB31AD8830400B23314 /* Images.xcassets in Resources */,
 				23354AB41AD8830400B23314 /* Info.plist in Resources */,
+				2365F4E41AD8F646008A9BE9 /* prev-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23354AAD1AD8830400B23314 /* ViewController.swift in Sources */,
+				23354AAD1AD8830400B23314 /* PopupViewController.swift in Sources */,
 				23354AAC1AD8830400B23314 /* AppDelegate.swift in Sources */,
 				23354AB01AD8830400B23314 /* SonosManager.m in Sources */,
 				23354AAE1AD8830400B23314 /* SonosController.m in Sources */,
