@@ -18,26 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var sonosDevices: [SonosController] = []
     var currentDevice: SonosController = SonosController()
     
-    // Initialization of application
-    override init() {
-        super.init()
-        
-        // Add statusBarItem to status bar
-        statusBarItem = statusBar.statusItemWithLength(-1)
-
-        statusBarItem.image = NSImage(named: "sonos-icon-round")
-        if let statusButton = statusBarItem.button {
-            statusButton.action = "handlePopover:"
-        }
-        
-        // Create popup for info and controls
-        popover = NSPopover()
-        popover.behavior = NSPopoverBehavior.Transient
-        popover.contentViewController = PopupViewController()
-    }
-    
     func applicationWillFinishLaunching(aNotification: NSNotification)
     {
+        println("Application will finish launching started")
         // Find the available Sonos devices
         SonosDiscover.discoverControllers {
             (devices, error) -> Void
@@ -66,6 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                     println("Setting current device: \(deviceName)")
                                     self.currentDevice = controller
                                 }
+                                self.menuBarSetup()
                             }
                         })
                         self.sonosDevices.append(controller)
@@ -73,6 +57,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+        
+    }
+    
+    /**
+    Setup menubar status item
+    */
+    func menuBarSetup()
+    {
+        // Add statusBarItem to status bar
+        statusBarItem = statusBar.statusItemWithLength(-1)
+        
+        statusBarItem.image = NSImage(named: "sonos-icon-round")
+        if let statusButton = statusBarItem.button {
+            statusButton.action = "handlePopover:"
+        }
+        
+        // Create popup for info and controls
+        popover = NSPopover()
+        popover.behavior = NSPopoverBehavior.Transient
+        popover.contentViewController = PopupViewController()
     }
     
     /**

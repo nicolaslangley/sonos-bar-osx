@@ -125,13 +125,14 @@ class PopupViewController: NSViewController {
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["quitButton":quitButton]))
+        
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get the current device reference from the appdelegate
         let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         currentDevice = appDelegate.currentDevice
         
@@ -139,6 +140,9 @@ class PopupViewController: NSViewController {
     
     override func viewWillAppear() {
         // View has been load into memory and is about to be added to view hierarchy
+        if (currentDevice == nil) {
+            return
+        }
         currentDevice.playbackStatus({
             (playing, response, error)
             in
@@ -166,6 +170,9 @@ class PopupViewController: NSViewController {
     */
     func displayTrackInfo()
     {
+        if (currentDevice == nil) {
+            return
+        }
         currentDevice.trackInfo({
             (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
             in
@@ -178,6 +185,9 @@ class PopupViewController: NSViewController {
     */
     func playbackTogglePressed(sender: AnyObject)
     {
+        if (currentDevice == nil) {
+            return
+        }
         currentDevice.playbackStatus({
             (playing, response, error)
             in
@@ -221,6 +231,9 @@ class PopupViewController: NSViewController {
     */
     func nextPressed(sender: AnyObject)
     {
+        if (currentDevice == nil) {
+            return
+        }
         currentDevice.next({
             (response, error) -> Void
             in
@@ -238,6 +251,9 @@ class PopupViewController: NSViewController {
     */
     func prevPressed(sender: AnyObject)
     {
+        if (currentDevice == nil) {
+            return
+        }
         currentDevice.previous({
             (response, error) -> Void
             in
