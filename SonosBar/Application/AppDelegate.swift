@@ -13,16 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var statusBar = NSStatusBar.systemStatusBar()
     var statusBarItem: NSStatusItem = NSStatusItem()
-    var menu: NSMenu = NSMenu()
-    var infoMenuItem: NSMenuItem = NSMenuItem()
-    var playbackMenuItem: NSMenuItem = NSMenuItem()
-    var nextMenuItem: NSMenuItem = NSMenuItem()
-    var prevMenuItem: NSMenuItem = NSMenuItem()
-    var quitMenuItem: NSMenuItem = NSMenuItem()
+    var popover: NSPopover = NSPopover()
     
     var sonosDevices: [SonosController] = []
     var currentDevice: SonosController = SonosController()
-    var popover: NSPopover = NSPopover()
     
     // Initialization of application
     override init() {
@@ -38,38 +32,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Create popup for info and controls
         popover = NSPopover()
-        popover.behavior = .Transient
+        popover.behavior = NSPopoverBehavior.Transient
         popover.contentViewController = PopupViewController()
     }
     
     func applicationWillFinishLaunching(aNotification: NSNotification)
     {
-        // TODO: use SonosManager for discovering and handling devices?
+        // Find the available Sonos devices
         SonosDiscover.discoverControllers {
             (devices, error) -> Void
             in
-            if (devices == nil) {
+            if (devices == nil || error != nil) {
                 println("No devices found")
+                println(error)
             } else {
                 for device in devices {
                     if ((device["name"] as! String) == "BRIDGE") {
                         // Ignore any BRIDGEs
                         continue
+                    } else {
+                        var controller: SonosController = SonosController.alloc()
+                        controller.ip = device["ip"] as! String
+                        controller.port = Int32((device["port"] as! String).toInt()!)
+                        // Set the current playback device
+                        controller.playbackStatus({
+                            (playing, response, error)
+                            in
+                            if (error != nil) {
+                                println(error)
+                            } else {
+                                if (playing) {
+                                    let deviceName = device["name"]
+                                    println("Setting current device: \(deviceName)")
+                                    self.currentDevice = controller
+                                }
+                            }
+                        })
+                        self.sonosDevices.append(controller)
                     }
-                    var controller: SonosController = SonosController.alloc()
-                    controller.ip = device["ip"] as! String
-                    controller.port = Int32((device["port"] as! String).toInt()!)
-                    // Set the current playback device
-                    controller.playbackStatus({
-                        (playing, response, error)
-                        in
-                        if (playing) {
-                            let deviceName = device["name"]
-                            println("Setting current device: \(deviceName)")
-                            self.currentDevice = controller
-                        }
-                    })
-                    self.sonosDevices.append(controller)
                 }
             }
         }

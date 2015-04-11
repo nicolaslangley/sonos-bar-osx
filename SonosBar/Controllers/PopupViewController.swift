@@ -64,6 +64,17 @@ class PopupViewController: NSViewController {
         prevButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(prevButton)
         
+        let quitButton = NSButton()
+        quitButton.title = "Quit"
+        quitButton.target = self
+        quitButton.action = "quitPressed:"
+        quitButton.image = NSImage(named: "quit-button")
+        quitButton.imagePosition = NSCellImagePosition.ImageOnly
+        quitButton.bordered = false
+        quitButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(quitButton)
+        
+        
         // Create Label
         let trackInfoLabel = NSTextField()
         self.trackInfoLabel = trackInfoLabel
@@ -103,7 +114,17 @@ class PopupViewController: NSViewController {
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["nextButton":nextButton, "trackInfoLabel":trackInfoLabel]))
-        
+        // Quit button constraints
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:[quitButton(15.0)]-(5)-|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["quitButton":quitButton]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:|-(5)-[quitButton(15.0)]",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["quitButton":quitButton]))
     }
     
     

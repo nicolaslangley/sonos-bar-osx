@@ -19,6 +19,7 @@
 		23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */; };
 		23354ABA1AD8831000B23314 /* SonosBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354AB81AD8831000B23314 /* SonosBarTests.swift */; };
 		23354ABB1AD8ABD900B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
+		2344DAE71AD9064100B45612 /* quit-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2344DAE61AD9064100B45612 /* quit-button.png */; };
 		2365F4E41AD8F646008A9BE9 /* prev-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E31AD8F646008A9BE9 /* prev-button.png */; };
 		2365F4E81AD8F93C008A9BE9 /* next-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E51AD8F93C008A9BE9 /* next-button.png */; };
 		2365F4E91AD8F93C008A9BE9 /* pause-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E61AD8F93C008A9BE9 /* pause-button.png */; };
@@ -58,6 +59,7 @@
 		23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sonos-icon-round@2x.png"; sourceTree = "<group>"; };
 		23354AB71AD8831000B23314 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23354AB81AD8831000B23314 /* SonosBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SonosBarTests.swift; sourceTree = "<group>"; };
+		2344DAE61AD9064100B45612 /* quit-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit-button.png"; sourceTree = "<group>"; };
 		2365F4E31AD8F646008A9BE9 /* prev-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prev-button.png"; sourceTree = "<group>"; };
 		2365F4E51AD8F93C008A9BE9 /* next-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-button.png"; sourceTree = "<group>"; };
 		2365F4E61AD8F93C008A9BE9 /* pause-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-button.png"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		23354AA61AD8830400B23314 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2344DAE61AD9064100B45612 /* quit-button.png */,
 				2365F4E51AD8F93C008A9BE9 /* next-button.png */,
 				2365F4E61AD8F93C008A9BE9 /* pause-button.png */,
 				2365F4E71AD8F93C008A9BE9 /* play-button.png */,
@@ -278,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2344DAE71AD9064100B45612 /* quit-button.png in Resources */,
 				23354AB21AD8830400B23314 /* Main.storyboard in Resources */,
 				2365F4EA1AD8F93C008A9BE9 /* play-button.png in Resources */,
 				23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */,
