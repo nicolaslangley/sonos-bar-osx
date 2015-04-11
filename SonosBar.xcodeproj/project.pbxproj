@@ -17,8 +17,8 @@
 		23354AB31AD8830400B23314 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23354AA91AD8830400B23314 /* Images.xcassets */; };
 		23354AB41AD8830400B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
 		23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */; };
-		23354AB91AD8831000B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AB71AD8831000B23314 /* Info.plist */; };
 		23354ABA1AD8831000B23314 /* SonosBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354AB81AD8831000B23314 /* SonosBarTests.swift */; };
+		23354ABB1AD8ABD900B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
 		B996BDC194E0CDD89230DF0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA388C5113BCA8FBF8162A1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -277,7 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23354AB91AD8831000B23314 /* Info.plist in Resources */,
+				23354ABB1AD8ABD900B23314 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

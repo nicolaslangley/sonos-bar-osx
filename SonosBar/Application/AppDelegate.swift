@@ -14,13 +14,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBar = NSStatusBar.systemStatusBar()
     var statusBarItem: NSStatusItem = NSStatusItem()
     var menu: NSMenu = NSMenu()
-    var playMenuItem: NSMenuItem = NSMenuItem()
-    var pauseMenuItem: NSMenuItem = NSMenuItem()
+    var infoMenuItem: NSMenuItem = NSMenuItem()
+    var playbackMenuItem: NSMenuItem = NSMenuItem()
     var nextMenuItem: NSMenuItem = NSMenuItem()
     var prevMenuItem: NSMenuItem = NSMenuItem()
     var quitMenuItem: NSMenuItem = NSMenuItem()
     
     var sonosDevices: [SonosController] = []
+    var currentDevice: SonosController = SonosController()
     
     // Initialization of application
     override init() {
@@ -31,15 +32,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.menu = menu
         statusBarItem.image = NSImage(named: "sonos-icon-round")
         
-        // Add play option to menu
-        playMenuItem.title = "Play"
-        playMenuItem.action = "playPressed:"
-        menu.addItem(playMenuItem)
+        // Add track info to menu
+        infoMenuItem.title = "Track Info"
+        menu.addItem(infoMenuItem)
         
-        // Add pause option to menu
-        pauseMenuItem.title = "Pause"
-        pauseMenuItem.action = "pausePressed:"
-        menu.addItem(pauseMenuItem)
+        // Add playback toggle option to menu
+        playbackMenuItem.title = "Play"
+        playbackMenuItem.action = "playbackTogglePressed:"
+        menu.addItem(playbackMenuItem)
         
         // Add next option to menu
         nextMenuItem.title = "Next"
@@ -67,47 +67,82 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             in
             if (devices == nil) {
                 println("No devices found")
+                self.infoMenuItem.title = "No Devices Found"
             } else {
                 for device in devices {
+                    if ((device["name"] as! String) == "BRIDGE") {
+                        // Ignore any BRIDGEs
+                        continue
+                    }
                     var controller: SonosController = SonosController.alloc()
                     controller.ip = device["ip"] as! String
                     controller.port = Int32((device["port"] as! String).toInt()!)
+                    // Set the current playback device
+                    controller.playbackStatus({
+                        (playing, response, error)
+                        in
+                        if (playing) {
+                            self.currentDevice = controller
+                            self.playbackMenuItem.title = "Pause"
+                            self.displayTrackInfo()
+                        }
+                    })
                     self.sonosDevices.append(controller)
                 }
             }
         }
+        
+        // Setup timer to continually update currently playing track
+        // Checks every 2 seconds
+        var timer = NSTimer.scheduledTimerWithTimeInterval(0.2,
+                                                           target: self,
+                                                           selector: "displayTrackInfo",
+                                                           userInfo: nil,
+                                                           repeats: true)
     }
     
     // MARK: Menu Choice Handling
     
     /**
-    Handle pressing of play option in status bar menu
+    Update display of current track info*You
     */
-    func playPressed(sender: AnyObject)
+    func displayTrackInfo()
     {
-        for device in self.sonosDevices {
-            device.play(nil, completion: {
-                (response, error) -> Void
-                in
-                println(response)
-                println(error)
-            })
-        }
+        currentDevice.trackInfo({
+            (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
+            in
+            self.infoMenuItem.title = "\(title) - \(artist)"
+        })
     }
     
     /**
-    Handle pressing of pause option in status bar menu
+    Handle pressing of toggle playback in status bar menu
     */
-    func pausePressed(sender: AnyObject)
+    func playbackTogglePressed(sender: AnyObject)
     {
-        for device in self.sonosDevices {
-            device.pause({
-                (response, error) -> Void
-                in
-                println(response)
-                println(error)
-            })
-        }
+        currentDevice.playbackStatus({
+            (playing, response, error)
+            in
+            if (playing) {
+                self.currentDevice.pause({
+                    (response, error) -> Void
+                    in
+                    println(response)
+                    println(error)
+                })
+                self.playbackMenuItem.title = "Play"
+                self.displayTrackInfo()
+            } else {
+                self.currentDevice.play(nil, completion: {
+                    (response, error) -> Void
+                    in
+                    println(response)
+                    println(error)
+                })
+                self.playbackMenuItem.title = "Pause"
+                self.displayTrackInfo()
+            }
+        })
     }
     
     /**
@@ -115,14 +150,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     */
     func nextPressed(sender: AnyObject)
     {
-        for device in self.sonosDevices {
-            device.next({
-                (response, error) -> Void
-                in
-                println(response)
-                println(error)
-            })
-        }
+        currentDevice.next({
+            (response, error) -> Void
+            in
+            println(response)
+            println(error)
+            self.displayTrackInfo()
+        })
     }
     
     /**
@@ -130,14 +164,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     */
     func prevPressed(sender: AnyObject)
     {
-        for device in self.sonosDevices {
-            device.previous({
-                (response, error) -> Void
-                in
-                println(response)
-                println(error)
-            })
-        }
+        currentDevice.previous({
+            (response, error) -> Void
+            in
+            println(response)
+            println(error)
+            self.displayTrackInfo()
+        })
     }
     
     /**
