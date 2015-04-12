@@ -17,6 +17,7 @@ class DevicePopupViewController: NSViewController {
     var nextButton: NSButton!
     var playbackButton: NSButton!
     var trackInfoLabel: NSTextField!
+    var volumeSlider: NSSlider!
     
     // Global reference to current device
     var currentDevice: SonosController? = nil
@@ -33,7 +34,7 @@ class DevicePopupViewController: NSViewController {
             toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 280))
         view.addConstraint(NSLayoutConstraint(
             item: view, attribute: .Height, relatedBy: .Equal,
-            toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 120))
+            toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 140))
         
         // Create the playback control buttons
         let playbackButton = NSButton()
@@ -102,8 +103,20 @@ class DevicePopupViewController: NSViewController {
         trackInfoLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(trackInfoLabel)
         
+        // Create volume slider control
+        let volumeSlider = NSSlider()
+        self.volumeSlider = volumeSlider
+        volumeSlider.target = self
+        volumeSlider.action = "volumeChanged:"
+        volumeSlider.maxValue = 100.0
+        volumeSlider.minValue = 0.0
+        volumeSlider.continuous = true
+        volumeSlider.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(volumeSlider)
+        
         
         // Add constraints to the view
+        // Horizontal
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(30)-[prevButton(playbackButton)]-[playbackButton]-[nextButton(playbackButton)]-(30)-|",
             options: NSLayoutFormatOptions(0),
@@ -114,21 +127,24 @@ class DevicePopupViewController: NSViewController {
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["trackInfoLabel":trackInfoLabel]))
+        
+        //Vertical
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel]-[playbackButton]-(20)-|",
+            "V:|-(20)-[trackInfoLabel(20)]-[playbackButton]-[volumeSlider(20)]-(20)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
-            views: ["playbackButton":playbackButton, "trackInfoLabel":trackInfoLabel]))
+            views: ["playbackButton":playbackButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel]-[prevButton]-(20)-|",
+            "V:|-(20)-[trackInfoLabel(20)]-[prevButton]-[volumeSlider(20)]-(20)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
-            views: ["prevButton":prevButton, "trackInfoLabel":trackInfoLabel]))
+            views: ["prevButton":prevButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel]-[nextButton]-(20)-|",
+            "V:|-(20)-[trackInfoLabel(20)]-[nextButton]-[volumeSlider(20)]-(20)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
-            views: ["nextButton":nextButton, "trackInfoLabel":trackInfoLabel]))
+            views: ["nextButton":nextButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
+        
         // Quit button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:[quitButton(15.0)]-(5)-|",
@@ -142,17 +158,15 @@ class DevicePopupViewController: NSViewController {
             views: ["quitButton":quitButton]))
         // Sonos app button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:[sonosAppButton(20.0)]-(5)-|",
+            "H:|-(25)-[volumeSlider]-[sonosAppButton(20.0)]-(5)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
-            views: ["sonosAppButton":sonosAppButton]))
+            views: ["sonosAppButton":sonosAppButton, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[sonosAppButton(20.0)]-(5)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["sonosAppButton":sonosAppButton]))
-        
-        
     }
     
     override func viewDidLoad() {
@@ -190,6 +204,8 @@ class DevicePopupViewController: NSViewController {
                     self.playbackButton.image = NSImage(named: "play-button")
                     self.trackInfoLabel.stringValue = "Nothing Playing"
                 }
+                // Sync volume slider
+                self.setVolumeSlider()
             }
         })
     }
@@ -207,8 +223,54 @@ class DevicePopupViewController: NSViewController {
         currentDevice!.trackInfo({
             (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
             in
-            self.trackInfoLabel.stringValue = "\(title) - \(artist)"
+            if (error != nil) {
+                println(error)
+            } else {
+                self.trackInfoLabel.stringValue = "\(title) - \(artist)"
+            }
         })
+    }
+    
+    // MARK: Volume Functions
+
+    /**
+    Set volume slider position to sync with Sonos volume
+    */
+    func setVolumeSlider()
+    {
+        if (currentDevice == nil) {
+            return
+        }
+        currentDevice!.getVolume({
+            (volume, response, error) -> Void
+            in
+            if (error != nil) {
+                println(error)
+            } else {
+                self.volumeSlider.integerValue = volume as Int
+            }
+        })
+    }
+    
+    /**
+    Update Sonos volume according to volume slider
+    */
+    func volumeChanged(sender: AnyObject)
+    {
+        if (currentDevice == nil) {
+            return
+        }
+        let sliderVolumeValue = self.volumeSlider.integerValue
+        currentDevice!.setVolume(sliderVolumeValue, completion: {
+            (response, error)
+            in
+            if (error != nil) {
+                println(error)
+            } else {
+                println(response)
+            }
+        })
+        
     }
     
     // MARK: View Button Handlers
