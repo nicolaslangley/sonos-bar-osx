@@ -19,6 +19,9 @@ class DevicePopupViewController: NSViewController {
     var trackInfoLabel: NSTextField!
     var volumeSlider: NSSlider!
     
+    // Global AppDelegate reference
+    var appDelegate: AppDelegate!
+    
     // Global reference to current device
     var currentDevice: SonosController? = nil
     var sonosDevices: [SonosController]?
@@ -173,7 +176,7 @@ class DevicePopupViewController: NSViewController {
         super.viewDidLoad()
         
         // Get current device from appDelegate
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         currentDevice = appDelegate.currentDevice
         sonosDevices = appDelegate.sonosDevices
     }
@@ -181,8 +184,8 @@ class DevicePopupViewController: NSViewController {
     override func viewWillAppear() {
         // View has been load into memory and is about to be added to view hierarchy
         if (currentDevice == nil) {
-            // There are no devices
-            self.trackInfoLabel.stringValue = "No Devices Found"
+            // There are no devices so check again
+            appDelegate.deviceSetup()
             return
         }
         currentDevice!.playbackStatus({
@@ -191,8 +194,7 @@ class DevicePopupViewController: NSViewController {
             if (error != nil) {
                 println(error)
                 // Check that device is still active
-                let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.deviceSetup()
+                self.appDelegate.deviceSetup()
             } else {
                 // Playback status was retrieved
                 if (playing) {
@@ -217,9 +219,6 @@ class DevicePopupViewController: NSViewController {
     */
     func displayTrackInfo()
     {
-        if (currentDevice == nil) {
-            return
-        }
         currentDevice!.trackInfo({
             (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
             in
@@ -238,9 +237,6 @@ class DevicePopupViewController: NSViewController {
     */
     func setVolumeSlider()
     {
-        if (currentDevice == nil) {
-            return
-        }
         currentDevice!.getVolume({
             (volume, response, error) -> Void
             in
@@ -257,9 +253,6 @@ class DevicePopupViewController: NSViewController {
     */
     func volumeChanged(sender: AnyObject)
     {
-        if (currentDevice == nil) {
-            return
-        }
         let sliderVolumeValue = self.volumeSlider.integerValue
         currentDevice!.setVolume(sliderVolumeValue, completion: {
             (response, error)
@@ -280,9 +273,6 @@ class DevicePopupViewController: NSViewController {
     */
     func playbackTogglePressed(sender: AnyObject)
     {
-        if (currentDevice == nil) {
-            return
-        }
         currentDevice!.playbackStatus({
             (playing, response, error)
             in
@@ -326,9 +316,6 @@ class DevicePopupViewController: NSViewController {
     */
     func nextPressed(sender: AnyObject)
     {
-        if (currentDevice == nil) {
-            return
-        }
         currentDevice!.next({
             (response, error) -> Void
             in
@@ -346,9 +333,6 @@ class DevicePopupViewController: NSViewController {
     */
     func prevPressed(sender: AnyObject)
     {
-        if (currentDevice == nil) {
-            return
-        }
         currentDevice!.previous({
             (response, error) -> Void
             in

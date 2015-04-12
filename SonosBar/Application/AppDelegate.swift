@@ -65,6 +65,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 if (playing) {
                                     println("Setting current device: \(controller.name)")
                                     self.currentDevice = controller
+                                } else {
+                                    // If we are at the last device and no current device has been set
+                                    if (self.currentDevice == nil && device === devices.last!) {
+                                        // Set the current device to be first in list
+                                        self.currentDevice = self.sonosDevices[0]
+                                        println("Setting current device: \(self.currentDevice!.name)")
+                                    }
                                 }
                                 // Set up the menubar
                                 self.menuBarSetup()
@@ -72,11 +79,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         })
                         self.sonosDevices.append(controller)
                     }
-                }
-                if (self.currentDevice == nil) {
-                    // Set the current device to be first in list
-                    self.currentDevice = self.sonosDevices[0]
-                    println("Setting current device: \(self.currentDevice!.name)")
                 }
             }
         }
