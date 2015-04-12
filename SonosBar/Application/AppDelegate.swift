@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var popoverTransiencyMonitor: AnyObject? = nil
     
     var sonosDevices: [SonosController] = []
-    var currentDevice: SonosController?
+    var currentDevice: SonosController? = nil
     
     // MARK: Interface Functions
     
@@ -54,6 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         var controller: SonosController = SonosController.alloc()
                         controller.ip = device["ip"] as! String
                         controller.port = Int32((device["port"] as! String).toInt()!)
+                        controller.name = device["name"] as! String
                         // Set the current playback device
                         controller.playbackStatus({
                             (playing, response, error)
@@ -62,8 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                 println(error)
                             } else {
                                 if (playing) {
-                                    let deviceName = device["name"]
-                                    println("Setting current device: \(deviceName)")
+                                    println("Setting current device: \(controller.name)")
                                     self.currentDevice = controller
                                 }
                                 // Set up the menubar
@@ -72,6 +72,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         })
                         self.sonosDevices.append(controller)
                     }
+                }
+                if (self.currentDevice == nil) {
+                    // Set the current device to be first in list
+                    self.currentDevice = self.sonosDevices[0]
+                    println("Setting current device: \(self.currentDevice!.name)")
                 }
             }
         }

@@ -42,9 +42,8 @@ class NoDevicePopupViewController: NSViewController {
         rescanButton.title = "Rescan for Devices"
         rescanButton.target = self
         rescanButton.action = "rescanPressed:"
-//        rescanButton.image = NSImage(named: "quit-button")
-//        rescanButton.imagePosition = NSCellImagePosition.ImageOnly
-        rescanButton.bordered = false
+        rescanButton.bezelStyle = NSBezelStyle.RoundedBezelStyle
+        rescanButton.bordered = true
         rescanButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(rescanButton)
         
@@ -94,7 +93,7 @@ class NoDevicePopupViewController: NSViewController {
             metrics: nil,
             views: ["trackInfoLabel":trackInfoLabel]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel]-[rescanButton]-(20)-|",
+            "V:|-(20)-[trackInfoLabel]-[rescanButton(20.0)]-(20)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["rescanButton":rescanButton, "trackInfoLabel":trackInfoLabel]))
@@ -138,23 +137,6 @@ class NoDevicePopupViewController: NSViewController {
             self.trackInfoLabel.stringValue = "No Devices Found"
             return
         }
-    }
-    
-    // MARK: Display Functions
-    
-    /**
-    Update display of current track info*You
-    */
-    func displayTrackInfo()
-    {
-        if (currentDevice == nil) {
-            return
-        }
-        currentDevice!.trackInfo({
-            (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
-            in
-            self.trackInfoLabel.stringValue = "\(title) - \(artist)"
-        })
     }
     
     // MARK: View Button Handlers
