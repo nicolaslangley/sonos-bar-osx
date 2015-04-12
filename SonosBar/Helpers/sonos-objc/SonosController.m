@@ -397,9 +397,12 @@
      soap_arguments:@"<InstanceID>0</InstanceID>"
      completion:^(NSDictionary *response, NSError *error) {
          if(block) {
-             if(error) block(nil, error);
-             NSDictionary *returnData = @{@"CurrentTransportState" : response[@"s:Envelope"][@"s:Body"][@"u:GetTransportInfoResponse"][@"CurrentTransportState"][@"text"]};
-             block(returnData, nil);
+             if(error) {
+                 block(nil, error);
+             } else {
+                 NSDictionary *returnData = @{@"CurrentTransportState" : response[@"s:Envelope"][@"s:Body"][@"u:GetTransportInfoResponse"][@"CurrentTransportState"][@"text"]};
+                 block(returnData, nil);
+             }
          }
      }];
 }

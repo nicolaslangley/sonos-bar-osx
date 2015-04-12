@@ -9,7 +9,7 @@
 import Cocoa
 import AppKit
 
-class PopupViewController: NSViewController {
+class DevicePopupViewController: NSViewController {
     
     // MARK: Global Variables
     // Global reference to view components
@@ -176,6 +176,9 @@ class PopupViewController: NSViewController {
             in
             if (error != nil) {
                 println(error)
+                // Check that device is still active
+                let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.deviceSetup()
             } else {
                 // Playback status was retrieved
                 if (playing) {

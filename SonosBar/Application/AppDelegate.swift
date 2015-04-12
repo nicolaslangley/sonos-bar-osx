@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Global Variables
     
     var statusBar = NSStatusBar.systemStatusBar()
-    var statusBarItem: NSStatusItem = NSStatusItem()
+    var statusBarItem: NSStatusItem? = nil
     var popover: NSPopover = NSPopover()
     var popoverTransiencyMonitor: AnyObject? = nil
     
@@ -25,7 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(aNotification: NSNotification)
     {
-        println("Application will finish launching started")
         // Find the available Sonos devices
         self.deviceSetup()
     }
@@ -44,8 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if (devices == nil) {
                 println("No devices found")
                 // Set up the menubar
-                self.menuBarSetup()
                 self.currentDevice = nil
+                self.menuBarSetup()
             } else {
                 for device in devices {
                     if ((device["name"] as! String) == "BRIDGE") {
@@ -84,17 +83,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func menuBarSetup()
     {
         // Add statusBarItem to status bar
-        statusBarItem = statusBar.statusItemWithLength(-1)
-        
-        statusBarItem.image = NSImage(named: "sonos-icon-round")
-        if let statusButton = statusBarItem.button {
-            statusButton.action = "handlePopover:"
+        if (statusBarItem == nil) {
+            statusBarItem = statusBar.statusItemWithLength(-1)
+            statusBarItem!.image = NSImage(named: "sonos-icon-round")
+            if let statusButton = statusBarItem!.button {
+                statusButton.action = "handlePopover:"
+            }
+            // Create popup for info and controls
+            popover = NSPopover()
+            popover.behavior = NSPopoverBehavior.Transient
         }
-        
-        // Create popup for info and controls
-        popover = NSPopover()
-        popover.behavior = NSPopoverBehavior.Transient
-        popover.contentViewController = PopupViewController()
+        // Set view controller depending on if a device is found
+        if (self.currentDevice == nil) {
+            popover.contentViewController = NoDevicePopupViewController()
+        } else {
+            popover.contentViewController = DevicePopupViewController()
+        }
     }
     
     // MARK: Popover Functions
@@ -104,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     */
     func handlePopover(sender: AnyObject)
     {
-        if let statusButton = statusBarItem.button {
+        if let statusButton = statusBarItem!.button {
             if popover.shown {
                 popover.close()
             } else {
@@ -118,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     */
     func openPopover(sender: AnyObject)
     {
-        if let statusButton = statusBarItem.button {
+        if let statusButton = statusBarItem!.button {
             popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDownMask|NSEventMask.RightMouseDownMask,
                 handler: {(event) -> Void
                     in
