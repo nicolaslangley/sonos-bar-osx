@@ -20,6 +20,9 @@ class NoDevicePopupViewController: NSViewController {
     var playbackButton: NSButton!
     var trackInfoLabel: NSTextField!
     
+    // Global AppDelegate reference
+    var appDelegate: AppDelegate!
+    
     // Global reference to current device
     var currentDevice: SonosController? = nil
     var sonosDevices: [SonosController]?
@@ -35,7 +38,7 @@ class NoDevicePopupViewController: NSViewController {
             toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 280))
         view.addConstraint(NSLayoutConstraint(
             item: view, attribute: .Height, relatedBy: .Equal,
-            toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 120))
+            toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 140))
         
         // Create the playback control buttons
         let rescanButton = NSButton()
@@ -93,7 +96,7 @@ class NoDevicePopupViewController: NSViewController {
             metrics: nil,
             views: ["trackInfoLabel":trackInfoLabel]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel]-[rescanButton(20.0)]-(20)-|",
+            "V:|-(30)-[trackInfoLabel]-(5)-[rescanButton(trackInfoLabel)]-(30)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["rescanButton":rescanButton, "trackInfoLabel":trackInfoLabel]))
@@ -125,7 +128,7 @@ class NoDevicePopupViewController: NSViewController {
         super.viewDidLoad()
         
         // Get current device from appDelegate
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         currentDevice = appDelegate.currentDevice
         sonosDevices = appDelegate.sonosDevices
     }
@@ -147,11 +150,10 @@ class NoDevicePopupViewController: NSViewController {
     func rescanPressed(sender: AnyObject)
     {
         // Launch Sonos Controller app
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.deviceSetup()
         currentDevice = appDelegate.currentDevice
         if (currentDevice != nil) {
-            println("Devices Found on Rescan")
+            println("Devices found on rescan")
         }
     }
     
