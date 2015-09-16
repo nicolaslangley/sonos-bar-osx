@@ -9,7 +9,7 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+public class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: Global Variables
     
@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: Interface Functions
     
-    func applicationWillFinishLaunching(aNotification: NSNotification)
+    public func applicationWillFinishLaunching(aNotification: NSNotification)
     {
         // Find the available Sonos devices
         self.deviceSetup()
@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
     Search for Sonos devices and perform setup
     */
-    func deviceSetup()
+    public func deviceSetup()
     {
         println("Searching for Sonos devices")
         SonosDiscover.discoverControllers {
@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
     Setup menubar status item
     */
-    func menuBarSetup()
+    public func menuBarSetup()
     {
         // Add statusBarItem to status bar
         if (statusBarItem == nil) {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2303D06E1AD9AC0900D89819 /* sonos-app-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2303D06D1AD9AC0900D89819 /* sonos-app-button.png */; };
 		2303D0701AD9EFDC00D89819 /* NoDevicePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2303D06F1AD9EFDC00D89819 /* NoDevicePopupViewController.swift */; };
+		232203C61BA9CAE9006473A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA388C5113BCA8FBF8162A1 /* libPods.a */; };
 		23354AAC1AD8830400B23314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A981AD8830400B23314 /* AppDelegate.swift */; };
 		23354AAD1AD8830400B23314 /* DevicePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9B1AD8830400B23314 /* DevicePopupViewController.swift */; };
 		23354AAE1AD8830400B23314 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9F1AD8830400B23314 /* SonosController.m */; };
@@ -17,7 +18,6 @@
 		23354AB11AD8830400B23314 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354AA51AD8830400B23314 /* XMLReader.m */; };
 		23354AB21AD8830400B23314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23354AA71AD8830400B23314 /* Main.storyboard */; };
 		23354AB31AD8830400B23314 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23354AA91AD8830400B23314 /* Images.xcassets */; };
-		23354AB41AD8830400B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
 		23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */; };
 		23354ABA1AD8831000B23314 /* SonosBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354AB81AD8831000B23314 /* SonosBarTests.swift */; };
 		23354ABB1AD8ABD900B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
@@ -84,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232203C61BA9CAE9006473A8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +252,7 @@
 		23350E991AA2C6C200485199 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Nicolas Langley";
 				TargetAttributes = {
 					23350EA01AA2C6C200485199 = {
@@ -295,7 +296,6 @@
 				2365F4E91AD8F93C008A9BE9 /* pause-button.png in Resources */,
 				2365F4E81AD8F93C008A9BE9 /* next-button.png in Resources */,
 				23354AB31AD8830400B23314 /* Images.xcassets in Resources */,
-				23354AB41AD8830400B23314 /* Info.plist in Resources */,
 				2365F4E41AD8F646008A9BE9 /* prev-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +493,7 @@
 		};
 		23350EC11AA2C6C200485199 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11539C02C406E767733A578D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -507,12 +508,14 @@
 				INFOPLIST_FILE = SonosBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = SonosBarTests;
+				SWIFT_OBJC_BRIDGING_HEADER = "SonosBar/Application/SonosBar-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonosBar.app/Contents/MacOS/SonosBar";
 			};
 			name = Debug;
 		};
 		23350EC21AA2C6C200485199 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BEC11E1C5B092FC6661141E /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -523,6 +526,7 @@
 				INFOPLIST_FILE = SonosBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = SonosBarTests;
+				SWIFT_OBJC_BRIDGING_HEADER = "SonosBar/Application/SonosBar-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonosBar.app/Contents/MacOS/SonosBar";
 			};
 			name = Release;

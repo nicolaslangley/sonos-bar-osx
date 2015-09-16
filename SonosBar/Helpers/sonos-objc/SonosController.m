@@ -292,7 +292,7 @@
      upnp:@"/MediaRenderer/RenderingControl/Control"
      soap_service:@"urn:schemas-upnp-org:service:RenderingControl:1"
      soap_action:@"SetVolume"
-     soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>%d</DesiredVolume>", volume]
+     soap_arguments:[NSString stringWithFormat:@"<InstanceID>0</InstanceID><Channel>Master</Channel><DesiredVolume>%ld</DesiredVolume>", (long)volume]
      completion:block];
 }
 

@@ -1,6 +1,6 @@
 //
-//  SonosControllerTests.swift
-//  SonosControllerTests
+//  SonosBarTests.swift
+//  SonosBarTests
 //
 //  Created by Nicolas Langley on 2/28/15.
 //  Copyright (c) 2015 Nicolas Langley. All rights reserved.
@@ -8,8 +8,9 @@
 
 import Cocoa
 import XCTest
+import SonosBar
 
-class SonosControllerTests: XCTestCase {
+class SonosBarTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
