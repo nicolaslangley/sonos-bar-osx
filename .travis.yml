@@ -1,0 +1,13 @@
+language: objective-c
+
+branches:
+     only:
+          - master
+
+     xcode_project: SonosBar.xcodeproj
+     xcode_scheme: SonosBarTests
+     osx_image: xcode6.4
+     xcode_sdk: iphonesimulator8.4 
+
+     script:
+         - xcodebuild clean build test -project SonosBar.xcodeproj -scheme SonosBarTests
