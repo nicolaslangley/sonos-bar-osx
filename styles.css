@@ -1,0 +1,90 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-top:5em;
+  margin-bottom:5em;
+  background-image: url(images/sonos1-black-black.jpeg);
+  background-size: cover;
+}
+
+.logo {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight:300;
+  font-size:700%;
+  text-align:center;
+  color:#FFF;
+  margin-bottom:0em;
+}
+
+.slogan {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color:#FFF;
+  font-weight:300;
+  text-align:center;
+  margin-bottom:1em;
+  font-size:300%;
+}
+
+.header {
+  font-style:italic;
+  color:#FFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Hevetica, Arial, "Lucida Grande", sans-serif;
+  font-weight:300;
+  font-size:300%;
+  text-align:center;
+  margin-bottom:1em;
+  margin-top:2em;
+}
+
+.main {
+  margin-top:5em;
+  margin-bottom:5em;
+  background-image: url(images/sonos1-black-black.jpeg);
+  background-size: cover;
+}
+
+.download {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #13395f;
+  border-width: 2px;
+  border-color: #335c80;
+  font-size:200%;
+  margin-bottom:0.5em;
+  margin-top:2.5em;
+  margin: 0 auto;
+}
+
+.download:hover {
+  color:#13395f;
+  background-color: #ffffff;
+  border-color:#335c80;
+}
+
+.info {
+  font-style: italic;
+  color: #FFF;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size:120%;
+  text-align: center;
+}
+
+.navbar-default {
+  background-color: #13395f;  
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+  color: #ffffff;
+}
+
+.footer {
+  color: #ffffff;
+  font-size:140%;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucdia Grande", sans-serif;
+  font-weight; 300;
+}

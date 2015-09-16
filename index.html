@@ -1,126 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-    <head>
-        <title>SonosBar</title>
+    <title>SonosBar - OSX Menubar Control for Sonos</title>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-        <style>
-            .source {
-                font-weight: normal;
-                font-size: 90%;
-            }
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Stylesheet for icons -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="styles.css" rel="stylesheet">
+  </head>
 
-            .logo {
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-                font-weight:300;
-                font-size:700%;
-                text-align:center;
-                color:#FFF;
-                margin-bottom:0em;
-            }
-
-            .slogan {
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-                color:#FFF;
-                font-weight:300;
-                text-align:center;
-                margin-bottom:1em;
-                font-size:300%;
-            }
-
-            .header {
-                font-style:italic;
-                color:#FFF;
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Hevetica, Arial, "Lucida Grande", sans-serif;
-                font-weight:300;
-                font-size:300%;
-                text-align:center;
-                margin-bottom:1em;
-                margin-top:2em;
-            }
-
-            .main {
-                margin-top:5em;
-                margin-bottom:5em;
-                background-image: url(images/sonos1-black-black.jpeg);
-                background-size: cover;
-            }
-
-            .download {
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-                font-weight: 300;
-                color: #ffffff;
-                background-color: #13395f;
-                border-width: 2px;
-                border-color: #335c80;
-                font-size:200%;
-                margin-bottom:0.5em;
-                margin-top:2.5em;
-                margin: 0 auto;
-            }
-
-            .download:hover {
-                color:#13395f;
-                background-color: #ffffff;
-                border-color:#335c80;
-            }
-
-            .info {
-                font-style: italic;
-                color: #FFF;
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-                font-weight: 300;
-                font-size:120%;
-                text-align: center;
-            }
-
-            .navbar-default {
-                background-color: #13395f;  
-                background-image: none;
-                background-repeat: no-repeat;
-                filter: none;
-                color: #ffffff;
-            }
-
-            .footer {
-                color: #ffffff;
-                font-size:140%;
-                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucdia Grande", sans-serif;
-                font-weight; 300;
-            }
-        </style>
-
-    </head>
-
-    <body class="main">
-
+  <body>
+    <!-- Begin page content -->
+    <div class="container">
+      <div id="header">
+        <h1 class="logo">SonosBar</h1>
+        <h2 class="slogan">Menu Bar Controller for OS X</h2>
+      </div>
+      <div id="links">
+        <div>
+          <center>
+            <a href="https://github.com/nicolaslangley/sonos-bar-osx/releases/download/0.1/Spotify.-.0.1.zip" type="button" class="btn btn-lg download"><i class="fa fa-arrow-circle-o-down"></i> Download</a><br>
+            <small class="info">Version 0.1 // 1.7 MB</small><br>
+          </center>
+        </div>
+      </div>
+    </div>
+    <!-- Begin footer content -->
+    <div id="footer">
+      <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
         <div class="container">
-
-            <div id="header">
-                <h1 class="logo">SonosBar</h1>
-                <h2 class="slogan">Control Sonos from the menubar</h2>
-            </div>
-
-            <div id="links">
-
-                <div>
-                        <center>
-                            <a href="https://github.com/nicolaslangley/sonos-bar-osx/releases/download/v0.1-alpha/SonosBar.zip" type="button" class="btn btn-lg download"><i class="fa fa-arrow-circle-o-down"></i> Download</a><br>
-                            <small class="info">Version 0.1 // 1.7 MB</small><br>
-                        </center>
-                </div>
-            </div>
+          <p class="navbar-text pull-left footer" style="color:#ffffff">Made by <a href="https://www.linkedin.com/in/nicolaslangley">Nicolas Langley</a></p>
+          <p class="navbar-text pull-right footer" style="color:#ffffff">Sonos is a registered trademark of Sonos, Inc.</p>
         </div>
-
-        <div id="footer">
-            <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-                <div class="container">
-                    <p class="navbar-text pull-left footer" style="color:#ffffff">Made by <a href="https://www.linkedin.com/in/nicolaslangley">Nicolas Langley</a></p>
-                    <p class="navbar-text pull-right footer" style="color:#ffffff">Sonos is a registered trademark of Sonos, Inc.</p>
-                </div>
-            </nav>
-        </div>
-    </body>
+      </nav>
+    </div>
+  </body>
 </html>
