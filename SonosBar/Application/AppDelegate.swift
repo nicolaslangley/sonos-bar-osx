@@ -37,6 +37,8 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     public func deviceSetup()
     {
         println("Searching for Sonos devices")
+        // Clear the current list of devices
+        self.sonosDevices.removeAll(keepCapacity: false)
         SonosDiscover.discoverControllers {
             (devices, error) -> Void
             in
