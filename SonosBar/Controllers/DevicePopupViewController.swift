@@ -24,7 +24,7 @@ class DevicePopupViewController: NSViewController {
     
     // Global reference to current device
     var currentDevice: SonosController? = nil
-    var sonosDevices: [SonosController]?
+    var sonosCoordinators: [SonosController]?
 
     // MARK: Interface Functions
     
@@ -178,14 +178,14 @@ class DevicePopupViewController: NSViewController {
         // Get current device from appDelegate
         appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         currentDevice = appDelegate.currentDevice
-        sonosDevices = appDelegate.sonosDevices
+        sonosCoordinators = appDelegate.sonosCoordinators
     }
     
     override func viewWillAppear() {
         // View has been load into memory and is about to be added to view hierarchy
         if (currentDevice == nil) {
             // There are no devices so check again
-            appDelegate.deviceSetup()
+            appDelegate.sonosManager?.refreshDevices()
             return
         }
         currentDevice!.playbackStatus({

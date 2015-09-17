@@ -25,7 +25,7 @@ class NoDevicePopupViewController: NSViewController {
     
     // Global reference to current device
     var currentDevice: SonosController? = nil
-    var sonosDevices: [SonosController]?
+    var sonosCoordinators: [SonosController]?
     
     // MARK: Interface Functions
     
@@ -130,7 +130,7 @@ class NoDevicePopupViewController: NSViewController {
         // Get current device from appDelegate
         appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         currentDevice = appDelegate.currentDevice
-        sonosDevices = appDelegate.sonosDevices
+        sonosCoordinators = appDelegate.sonosCoordinators
     }
     
     override func viewWillAppear() {
