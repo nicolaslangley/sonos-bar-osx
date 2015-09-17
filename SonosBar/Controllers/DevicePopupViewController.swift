@@ -16,6 +16,7 @@ class DevicePopupViewController: NSViewController {
     var prevButton: NSButton!
     var nextButton: NSButton!
     var playbackButton: NSButton!
+    var currentDeviceLabel: NSTextField!
     var trackInfoLabel: NSTextField!
     var volumeSlider: NSSlider!
     
@@ -83,6 +84,7 @@ class DevicePopupViewController: NSViewController {
         quitButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(quitButton)
         
+        // Add button for opening Sonos Controller app
         let sonosAppButton = NSButton()
         sonosAppButton.title = "Sonos App"
         sonosAppButton.target = self
@@ -93,8 +95,19 @@ class DevicePopupViewController: NSViewController {
         sonosAppButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(sonosAppButton)
         
+        // Create label for currently playing device
+        let currentDeviceLabel = NSTextField()
+        self.currentDeviceLabel = currentDeviceLabel
+        currentDeviceLabel.stringValue = "Current Device"
+        currentDeviceLabel.alignment = NSTextAlignment.LeftTextAlignment
+        currentDeviceLabel.editable = false
+        currentDeviceLabel.selectable = false
+        currentDeviceLabel.drawsBackground = false
+        currentDeviceLabel.bezeled = false
+        currentDeviceLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(currentDeviceLabel)
         
-        // Create Label
+        // Create Label for track info
         let trackInfoLabel = NSTextField()
         self.trackInfoLabel = trackInfoLabel
         trackInfoLabel.stringValue = "Track Info"
@@ -133,17 +146,17 @@ class DevicePopupViewController: NSViewController {
         
         //Vertical
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel(20)]-[playbackButton]-[volumeSlider(20)]-(20)-|",
+            "V:|-(15)-[trackInfoLabel(20)]-[playbackButton]-[volumeSlider(20)]-(25)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["playbackButton":playbackButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel(20)]-[prevButton]-[volumeSlider(20)]-(20)-|",
+            "V:|-(15)-[trackInfoLabel(20)]-[prevButton]-[volumeSlider(20)]-(25)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["prevButton":prevButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|-(20)-[trackInfoLabel(20)]-[nextButton]-[volumeSlider(20)]-(20)-|",
+            "V:|-(15)-[trackInfoLabel(20)]-[nextButton]-[volumeSlider(20)]-(25)-|",
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["nextButton":nextButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
@@ -159,6 +172,7 @@ class DevicePopupViewController: NSViewController {
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["quitButton":quitButton]))
+        
         // Sonos app button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(25)-[volumeSlider]-[sonosAppButton(20.0)]-(5)-|",
@@ -170,6 +184,18 @@ class DevicePopupViewController: NSViewController {
             options: NSLayoutFormatOptions(0),
             metrics: nil,
             views: ["sonosAppButton":sonosAppButton]))
+        
+        // Current device label constraints
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "H:|-(25)-[currentDeviceLabel]-[sonosAppButton(20.0)]-(5)-|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["currentDeviceLabel":currentDeviceLabel, "sonosAppButton":sonosAppButton]))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
+            "V:[currentDeviceLabel(17.5)]-(5)-|",
+            options: NSLayoutFormatOptions(0),
+            metrics: nil,
+            views: ["currentDeviceLabel":currentDeviceLabel]))
     }
     
     override func viewDidLoad() {
@@ -186,6 +212,7 @@ class DevicePopupViewController: NSViewController {
         // Update current device - gets whichever device is currently playing
         appDelegate.sonosManager?.refreshDevices()
         currentDevice = appDelegate.currentDevice
+        self.currentDeviceLabel.stringValue = "Controlling: \(currentDevice!.name as String)"
         currentDevice!.playbackStatus({
             (playing, response, error)
             in
