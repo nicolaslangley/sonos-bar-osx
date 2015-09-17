@@ -12,16 +12,16 @@
 		232203C61BA9CAE9006473A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA388C5113BCA8FBF8162A1 /* libPods.a */; };
 		23354AAC1AD8830400B23314 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A981AD8830400B23314 /* AppDelegate.swift */; };
 		23354AAD1AD8830400B23314 /* DevicePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9B1AD8830400B23314 /* DevicePopupViewController.swift */; };
-		23354AAE1AD8830400B23314 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354A9F1AD8830400B23314 /* SonosController.m */; };
-		23354AAF1AD8830400B23314 /* SonosDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354AA11AD8830400B23314 /* SonosDiscover.m */; };
-		23354AB01AD8830400B23314 /* SonosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354AA31AD8830400B23314 /* SonosManager.m */; };
-		23354AB11AD8830400B23314 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 23354AA51AD8830400B23314 /* XMLReader.m */; };
 		23354AB21AD8830400B23314 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23354AA71AD8830400B23314 /* Main.storyboard */; };
 		23354AB31AD8830400B23314 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23354AA91AD8830400B23314 /* Images.xcassets */; };
 		23354AB51AD8830400B23314 /* sonos-icon-round@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAB1AD8830400B23314 /* sonos-icon-round@2x.png */; };
 		23354ABA1AD8831000B23314 /* SonosBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23354AB81AD8831000B23314 /* SonosBarTests.swift */; };
 		23354ABB1AD8ABD900B23314 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23354AAA1AD8830400B23314 /* Info.plist */; };
 		2344DAE71AD9064100B45612 /* quit-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2344DAE61AD9064100B45612 /* quit-button.png */; };
+		235045E11BAA69B200B81022 /* SonosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235045DA1BAA69B200B81022 /* SonosController.m */; };
+		235045E21BAA69B200B81022 /* SonosDiscover.m in Sources */ = {isa = PBXBuildFile; fileRef = 235045DC1BAA69B200B81022 /* SonosDiscover.m */; };
+		235045E31BAA69B200B81022 /* SonosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 235045DE1BAA69B200B81022 /* SonosManager.m */; };
+		235045E41BAA69B200B81022 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 235045E01BAA69B200B81022 /* XMLReader.m */; };
 		2365F4E41AD8F646008A9BE9 /* prev-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E31AD8F646008A9BE9 /* prev-button.png */; };
 		2365F4E81AD8F93C008A9BE9 /* next-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E51AD8F93C008A9BE9 /* next-button.png */; };
 		2365F4E91AD8F93C008A9BE9 /* pause-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2365F4E61AD8F93C008A9BE9 /* pause-button.png */; };
@@ -49,14 +49,6 @@
 		23354A981AD8830400B23314 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23354A991AD8830400B23314 /* SonosBar-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SonosBar-Bridging-Header.h"; sourceTree = "<group>"; };
 		23354A9B1AD8830400B23314 /* DevicePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicePopupViewController.swift; sourceTree = "<group>"; };
-		23354A9E1AD8830400B23314 /* SonosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosController.h; sourceTree = "<group>"; };
-		23354A9F1AD8830400B23314 /* SonosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosController.m; sourceTree = "<group>"; };
-		23354AA01AD8830400B23314 /* SonosDiscover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosDiscover.h; sourceTree = "<group>"; };
-		23354AA11AD8830400B23314 /* SonosDiscover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosDiscover.m; sourceTree = "<group>"; };
-		23354AA21AD8830400B23314 /* SonosManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosManager.h; sourceTree = "<group>"; };
-		23354AA31AD8830400B23314 /* SonosManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosManager.m; sourceTree = "<group>"; };
-		23354AA41AD8830400B23314 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
-		23354AA51AD8830400B23314 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		23354AA81AD8830400B23314 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23354AA91AD8830400B23314 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		23354AAA1AD8830400B23314 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +56,14 @@
 		23354AB71AD8831000B23314 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23354AB81AD8831000B23314 /* SonosBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SonosBarTests.swift; sourceTree = "<group>"; };
 		2344DAE61AD9064100B45612 /* quit-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quit-button.png"; sourceTree = "<group>"; };
+		235045D91BAA69B200B81022 /* SonosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosController.h; sourceTree = "<group>"; };
+		235045DA1BAA69B200B81022 /* SonosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosController.m; sourceTree = "<group>"; };
+		235045DB1BAA69B200B81022 /* SonosDiscover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosDiscover.h; sourceTree = "<group>"; };
+		235045DC1BAA69B200B81022 /* SonosDiscover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosDiscover.m; sourceTree = "<group>"; };
+		235045DD1BAA69B200B81022 /* SonosManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonosManager.h; sourceTree = "<group>"; };
+		235045DE1BAA69B200B81022 /* SonosManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonosManager.m; sourceTree = "<group>"; };
+		235045DF1BAA69B200B81022 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		235045E01BAA69B200B81022 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		2365F4E31AD8F646008A9BE9 /* prev-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prev-button.png"; sourceTree = "<group>"; };
 		2365F4E51AD8F93C008A9BE9 /* next-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-button.png"; sourceTree = "<group>"; };
 		2365F4E61AD8F93C008A9BE9 /* pause-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-button.png"; sourceTree = "<group>"; };
@@ -152,24 +152,9 @@
 		23354A9C1AD8830400B23314 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				23354A9D1AD8830400B23314 /* sonos-objc */,
+				235045D81BAA69B200B81022 /* sonos-objc */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		23354A9D1AD8830400B23314 /* sonos-objc */ = {
-			isa = PBXGroup;
-			children = (
-				23354A9E1AD8830400B23314 /* SonosController.h */,
-				23354A9F1AD8830400B23314 /* SonosController.m */,
-				23354AA01AD8830400B23314 /* SonosDiscover.h */,
-				23354AA11AD8830400B23314 /* SonosDiscover.m */,
-				23354AA21AD8830400B23314 /* SonosManager.h */,
-				23354AA31AD8830400B23314 /* SonosManager.m */,
-				23354AA41AD8830400B23314 /* XMLReader.h */,
-				23354AA51AD8830400B23314 /* XMLReader.m */,
-			);
-			path = "sonos-objc";
 			sourceTree = "<group>";
 		};
 		23354AA61AD8830400B23314 /* Resources */ = {
@@ -196,6 +181,21 @@
 				23354AB81AD8831000B23314 /* SonosBarTests.swift */,
 			);
 			path = SonosBarTests;
+			sourceTree = "<group>";
+		};
+		235045D81BAA69B200B81022 /* sonos-objc */ = {
+			isa = PBXGroup;
+			children = (
+				235045D91BAA69B200B81022 /* SonosController.h */,
+				235045DA1BAA69B200B81022 /* SonosController.m */,
+				235045DB1BAA69B200B81022 /* SonosDiscover.h */,
+				235045DC1BAA69B200B81022 /* SonosDiscover.m */,
+				235045DD1BAA69B200B81022 /* SonosManager.h */,
+				235045DE1BAA69B200B81022 /* SonosManager.m */,
+				235045DF1BAA69B200B81022 /* XMLReader.h */,
+				235045E01BAA69B200B81022 /* XMLReader.m */,
+			);
+			path = "sonos-objc";
 			sourceTree = "<group>";
 		};
 		3E92391416F6EB835D688DC2 /* Frameworks */ = {
@@ -348,13 +348,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				235045E11BAA69B200B81022 /* SonosController.m in Sources */,
 				23354AAD1AD8830400B23314 /* DevicePopupViewController.swift in Sources */,
+				235045E41BAA69B200B81022 /* XMLReader.m in Sources */,
 				23354AAC1AD8830400B23314 /* AppDelegate.swift in Sources */,
-				23354AB01AD8830400B23314 /* SonosManager.m in Sources */,
-				23354AAE1AD8830400B23314 /* SonosController.m in Sources */,
+				235045E21BAA69B200B81022 /* SonosDiscover.m in Sources */,
+				235045E31BAA69B200B81022 /* SonosManager.m in Sources */,
 				2303D0701AD9EFDC00D89819 /* NoDevicePopupViewController.swift in Sources */,
-				23354AB11AD8830400B23314 /* XMLReader.m in Sources */,
-				23354AAF1AD8830400B23314 /* SonosDiscover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

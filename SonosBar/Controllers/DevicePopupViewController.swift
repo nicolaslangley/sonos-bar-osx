@@ -215,7 +215,7 @@ class DevicePopupViewController: NSViewController {
     // MARK: Display Functions
     
     /**
-    Update display of current track info*You
+    Update display of current track info
     */
     func displayTrackInfo()
     {

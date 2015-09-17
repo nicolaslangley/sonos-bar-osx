@@ -20,6 +20,8 @@
 
 + (id)sharedInstance;
 
+// Re-discovers all devices
+- (void)refreshDevices;
 // Returns a copy of all devices, coordinators + slaves
 - (NSArray *)allDevices;
 

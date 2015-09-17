@@ -17,19 +17,71 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem? = nil
     var popover: NSPopover = NSPopover()
     var popoverTransiencyMonitor: AnyObject? = nil
+    // Context for Key-Value Observer
+    private var allDevicesContext: UInt8 = 1
+    private var currentDeviceContext: UInt8 = 2
     
+    var sonosManager: SonosManager? = nil
     var sonosDevices: [SonosController] = []
     var currentDevice: SonosController? = nil
+    var sonosCoordinators: [SonosController] = []
     
     // MARK: Interface Functions
     
     public func applicationWillFinishLaunching(aNotification: NSNotification)
     {
         // Find the available Sonos devices
-        self.deviceSetup()
+        sonosManager = SonosManager.sharedInstance() as? SonosManager
+        sonosManager!.addObserver(self, forKeyPath: "allDevices", options: NSKeyValueObservingOptions.New, context: &allDevicesContext)
+        sonosManager!.addObserver(self, forKeyPath: "currentDevice", options: NSKeyValueObservingOptions.New, context: &currentDeviceContext)
+    }
+
+    // MARK: Setup Functions
+    
+    /**
+    Key-Value Observer for allDevices key
+    */
+    override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>)
+    {
+        if (context == &allDevicesContext)
+        {
+            sonosCoordinators = sonosManager?.coordinators as! [SonosController]
+            if (sonosCoordinators.isEmpty)
+            {
+                println("No devices found")
+                // Set up the menubar
+                self.currentDevice = nil
+                self.menuBarSetup()
+            }
+            else
+            {
+                for coordinator in sonosCoordinators
+                {
+                    if (coordinator.name != "BRIDGE")
+                    {
+                        self.currentDevice = coordinator
+                        println("Setting default device: \(currentDevice!.name)")
+                        break
+                    }
+                }
+            }
+            
+        }
+        else if (context == &currentDeviceContext)
+        {
+            if (!(sonosManager?.currentDevice!.name == "BRIDGE"))
+            {
+                self.currentDevice = sonosManager?.currentDevice
+                println("Setting current device: \(self.currentDevice!.name)")
+                self.menuBarSetup()
+            }
+        }
     }
     
-    // MARK: Setup Functions
+    public func refreshDevices()
+    {
+        
+    }
     
     /**
     Search for Sonos devices and perform setup

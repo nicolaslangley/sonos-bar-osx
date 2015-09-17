@@ -150,7 +150,7 @@ class NoDevicePopupViewController: NSViewController {
     func rescanPressed(sender: AnyObject)
     {
         // Launch Sonos Controller app
-        appDelegate.deviceSetup()
+        appDelegate.sonosManager!.refreshDevices()
         currentDevice = appDelegate.currentDevice
         if (currentDevice != nil) {
             println("Devices found on rescan")

@@ -421,7 +421,7 @@
 		94A2D181960E3F43DC6C4A99 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 			};
 			buildConfigurationList = 0097442F78ABC0C2082BA91C /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -502,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B90AFBA5E77D19342E402687 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -519,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B90AFBA5E77D19342E402687 /* Pods-AFNetworking-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-AFNetworking/Pods-AFNetworking-prefix.pch";
@@ -535,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CBB8C35861233AF5940D307 /* Pods-CocoaAsyncSocket-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-CocoaAsyncSocket/Pods-CocoaAsyncSocket-prefix.pch";
@@ -551,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 714099A841AF4BA9EE7DCFBA /* Pods.release.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -608,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CBB8C35861233AF5940D307 /* Pods-CocoaAsyncSocket-Private.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -659,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 95D48E992889BFFACC6A6EA0 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
