@@ -62,6 +62,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                     {
                         self.currentDevice = coordinator
                         println("Setting default device: \(currentDevice!.name)")
+                        self.menuBarSetup()
                         break
                     }
                 }
