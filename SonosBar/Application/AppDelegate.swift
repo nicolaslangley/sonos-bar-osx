@@ -45,6 +45,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     {
         if (context == &allDevicesContext)
         {
+            sonosCoordinators.removeAll(keepCapacity: false)
             sonosCoordinators = sonosManager?.coordinators as! [SonosController]
             if (sonosCoordinators.isEmpty)
             {
@@ -76,11 +77,6 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                 self.menuBarSetup()
             }
         }
-    }
-    
-    public func refreshDevices()
-    {
-        
     }
     
     /**
@@ -157,7 +153,9 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
         // Set view controller depending on if a device is found
         if (self.currentDevice == nil) {
             popover.contentViewController = NoDevicePopupViewController()
-        } else {
+        } else if let cvc = popover.contentViewController as? NoDevicePopupViewController {
+            popover.contentViewController = DevicePopupViewController()
+        } else if (popover.contentViewController == nil) {
             popover.contentViewController = DevicePopupViewController()
         }
     }

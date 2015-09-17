@@ -343,18 +343,26 @@
          // Convert current progress time to seconds
          NSString *timeString = positionInfoResponse[@"RelTime"][@"text"];
          NSArray *times = [timeString componentsSeparatedByString:@":"];
-         int hours = [[times objectAtIndex:0] intValue] * 3600;
-         int minutes = [[times objectAtIndex:1] intValue] * 60;
-         int seconds = [[times objectAtIndex:2] intValue];
-         NSInteger time = hours + minutes + seconds;
+         NSInteger time = 0;
+         if (![[times objectAtIndex:0] isEqualToString:@"NOT_IMPLEMENTED"])
+         {
+             int hours = [[times objectAtIndex:0] intValue] * 3600;
+             int minutes = [[times objectAtIndex:1] intValue] * 60;
+             int seconds = [[times objectAtIndex:2] intValue];
+             time = hours + minutes + seconds;
+         }
          
          // Convert track duration time to seconds
          NSString *durationString = positionInfoResponse[@"TrackDuration"][@"text"];
          NSArray *durations = [durationString componentsSeparatedByString:@":"];
-         int durationHours = [[durations objectAtIndex:0] intValue] * 3600;
-         int durationMinutes = [[durations objectAtIndex:1] intValue] * 60;
-         int durationSeconds = [[durations objectAtIndex:2] intValue];
-         NSInteger duration = durationHours + durationMinutes + durationSeconds;
+         NSInteger duration = 0;
+         if (![[durations objectAtIndex:0] isEqualToString:@"NOT_IMPLEMENTED"])
+         {
+             int durationHours = [[durations objectAtIndex:0] intValue] * 3600;
+             int durationMinutes = [[durations objectAtIndex:1] intValue] * 60;
+             int durationSeconds = [[durations objectAtIndex:2] intValue];
+             duration = durationHours + durationMinutes + durationSeconds;
+         }
          
          NSInteger queueIndex = [positionInfoResponse[@"Track"][@"text"] integerValue];
          

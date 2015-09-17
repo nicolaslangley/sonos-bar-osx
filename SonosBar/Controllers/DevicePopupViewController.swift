@@ -183,18 +183,16 @@ class DevicePopupViewController: NSViewController {
     
     override func viewWillAppear() {
         // View has been load into memory and is about to be added to view hierarchy
-        if (currentDevice == nil) {
-            // There are no devices so check again
-            appDelegate.sonosManager?.refreshDevices()
-            return
-        }
+        // Update current device - gets whichever device is currently playing
+        appDelegate.sonosManager?.refreshDevices()
+        currentDevice = appDelegate.currentDevice
         currentDevice!.playbackStatus({
             (playing, response, error)
             in
             if (error != nil) {
                 println(error)
                 // Check that device is still active
-                self.appDelegate.deviceSetup()
+                self.appDelegate.sonosManager?.refreshDevices()
             } else {
                 // Playback status was retrieved
                 if (playing) {
