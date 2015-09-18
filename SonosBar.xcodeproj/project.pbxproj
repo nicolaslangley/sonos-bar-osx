@@ -252,7 +252,9 @@
 		23350E991AA2C6C200485199 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Nicolas Langley";
 				TargetAttributes = {
 					23350EA01AA2C6C200485199 = {
@@ -408,6 +410,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -473,6 +476,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SonosBar/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hierarchy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SonosBar;
 				SWIFT_OBJC_BRIDGING_HEADER = "SonosBar/Application/SonosBar-Bridging-Header.h";
 			};
@@ -486,6 +490,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/SonosBar/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hierarchy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SonosBar;
 				SWIFT_OBJC_BRIDGING_HEADER = "SonosBar/Application/SonosBar-Bridging-Header.h";
 			};
@@ -507,6 +512,7 @@
 				);
 				INFOPLIST_FILE = SonosBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hierarchy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SonosBarTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "SonosBar/Application/SonosBar-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonosBar.app/Contents/MacOS/SonosBar";
@@ -525,6 +531,7 @@
 				);
 				INFOPLIST_FILE = SonosBarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Hierarchy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SonosBarTests;
 				SWIFT_OBJC_BRIDGING_HEADER = "SonosBar/Application/SonosBar-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SonosBar.app/Contents/MacOS/SonosBar";

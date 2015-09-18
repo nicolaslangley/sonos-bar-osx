@@ -75,7 +75,7 @@ class NoDevicePopupViewController: NSViewController {
         let trackInfoLabel = NSTextField()
         self.trackInfoLabel = trackInfoLabel
         trackInfoLabel.stringValue = "Track Info"
-        trackInfoLabel.alignment = NSTextAlignment.CenterTextAlignment
+        trackInfoLabel.alignment = NSCenterTextAlignment
         trackInfoLabel.editable = false
         trackInfoLabel.selectable = false
         trackInfoLabel.drawsBackground = false
@@ -87,39 +87,39 @@ class NoDevicePopupViewController: NSViewController {
         // Add constraints to the view
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(30)-[rescanButton]-(30)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["rescanButton":rescanButton]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(20)-[trackInfoLabel]-(20)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["trackInfoLabel":trackInfoLabel]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|-(30)-[trackInfoLabel]-(5)-[rescanButton(trackInfoLabel)]-(30)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["rescanButton":rescanButton, "trackInfoLabel":trackInfoLabel]))
         // Quit button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:[quitButton(15.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["quitButton":quitButton]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|-(5)-[quitButton(15.0)]",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["quitButton":quitButton]))
         // Sonos app button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:[sonosAppButton(20.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["sonosAppButton":sonosAppButton]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[sonosAppButton(20.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["sonosAppButton":sonosAppButton]))
     }
@@ -153,7 +153,7 @@ class NoDevicePopupViewController: NSViewController {
         appDelegate.sonosManager!.refreshDevices()
         currentDevice = appDelegate.currentDevice
         if (currentDevice != nil) {
-            println("Devices found on rescan")
+            print("Devices found on rescan")
         }
     }
     
@@ -172,7 +172,7 @@ class NoDevicePopupViewController: NSViewController {
     */
     func quitPressed(sender: AnyObject)
     {
-        println("Application Shutting Down...")
+        print("Application Shutting Down...")
         NSApplication.sharedApplication().terminate(self)
     }
     

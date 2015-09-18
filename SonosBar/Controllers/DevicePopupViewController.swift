@@ -99,7 +99,7 @@ class DevicePopupViewController: NSViewController {
         let currentDeviceLabel = NSTextField()
         self.currentDeviceLabel = currentDeviceLabel
         currentDeviceLabel.stringValue = "Current Device"
-        currentDeviceLabel.alignment = NSTextAlignment.LeftTextAlignment
+        currentDeviceLabel.alignment = NSLeftTextAlignment
         currentDeviceLabel.editable = false
         currentDeviceLabel.selectable = false
         currentDeviceLabel.drawsBackground = false
@@ -111,7 +111,7 @@ class DevicePopupViewController: NSViewController {
         let trackInfoLabel = NSTextField()
         self.trackInfoLabel = trackInfoLabel
         trackInfoLabel.stringValue = "Track Info"
-        trackInfoLabel.alignment = NSTextAlignment.CenterTextAlignment
+        trackInfoLabel.alignment = NSCenterTextAlignment
         trackInfoLabel.editable = false
         trackInfoLabel.selectable = false
         trackInfoLabel.drawsBackground = false
@@ -135,65 +135,65 @@ class DevicePopupViewController: NSViewController {
         // Horizontal
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(30)-[prevButton(playbackButton)]-[playbackButton]-[nextButton(playbackButton)]-(30)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["playbackButton":playbackButton, "prevButton":prevButton, "nextButton":nextButton]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(20)-[trackInfoLabel]-(20)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["trackInfoLabel":trackInfoLabel]))
         
         //Vertical
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|-(15)-[trackInfoLabel(20)]-[playbackButton]-[volumeSlider(20)]-(25)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["playbackButton":playbackButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|-(15)-[trackInfoLabel(20)]-[prevButton]-[volumeSlider(20)]-(25)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["prevButton":prevButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|-(15)-[trackInfoLabel(20)]-[nextButton]-[volumeSlider(20)]-(25)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["nextButton":nextButton, "trackInfoLabel":trackInfoLabel, "volumeSlider":volumeSlider]))
         
         // Quit button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:[quitButton(15.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["quitButton":quitButton]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|-(5)-[quitButton(15.0)]",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["quitButton":quitButton]))
         
         // Sonos app button constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(25)-[volumeSlider]-[sonosAppButton(20.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["sonosAppButton":sonosAppButton, "volumeSlider":volumeSlider]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[sonosAppButton(20.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["sonosAppButton":sonosAppButton]))
         
         // Current device label constraints
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-(25)-[currentDeviceLabel]-[sonosAppButton(20.0)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["currentDeviceLabel":currentDeviceLabel, "sonosAppButton":sonosAppButton]))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "V:[currentDeviceLabel(17.5)]-(5)-|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: ["currentDeviceLabel":currentDeviceLabel]))
     }
@@ -217,7 +217,7 @@ class DevicePopupViewController: NSViewController {
             (playing, response, error)
             in
             if (error != nil) {
-                println(error)
+                print(error)
                 // Check that device is still active
                 self.appDelegate.sonosManager?.refreshDevices()
             } else {
@@ -248,7 +248,7 @@ class DevicePopupViewController: NSViewController {
             (artist, title, album, albumArt, time, duration, queueIndex, trackURI, trackProtocol, error) -> Void
             in
             if (error != nil) {
-                println(error)
+                print(error)
             } else {
                 self.trackInfoLabel.stringValue = "\(title) - \(artist)"
             }
@@ -266,7 +266,7 @@ class DevicePopupViewController: NSViewController {
             (volume, response, error) -> Void
             in
             if (error != nil) {
-                println(error)
+                print(error)
             } else {
                 self.volumeSlider.integerValue = volume as Int
             }
@@ -283,9 +283,9 @@ class DevicePopupViewController: NSViewController {
             (response, error)
             in
             if (error != nil) {
-                println(error)
+                print(error)
             } else {
-                println(response)
+                print(response)
             }
         })
         
@@ -302,7 +302,7 @@ class DevicePopupViewController: NSViewController {
             (playing, response, error)
             in
             if (error != nil) {
-                println(error)
+                print(error)
             } else {
                 // Playback status was retrieved
                 if (playing) {
@@ -310,9 +310,9 @@ class DevicePopupViewController: NSViewController {
                         (response, error) -> Void
                         in
                         if (error != nil) {
-                            println(error)
+                            print(error)
                         } else {
-                            println(response)
+                            print(response)
                             // Set the correct title and icon
                             self.playbackButton.image = NSImage(named: "play-button")
                             self.displayTrackInfo()
@@ -323,9 +323,9 @@ class DevicePopupViewController: NSViewController {
                         (response, error) -> Void
                         in
                         if (error != nil) {
-                            println(error)
+                            print(error)
                         } else {
-                            println(response)
+                            print(response)
                             // Set the correct title and icon
                             self.playbackButton.image = NSImage(named: "pause-button")
                             self.displayTrackInfo()
@@ -345,10 +345,10 @@ class DevicePopupViewController: NSViewController {
             (response, error) -> Void
             in
             if (error != nil) {
-                println(error)
+                print(error)
             } else {
                 self.displayTrackInfo()
-                println(response)
+                print(response)
             }
         })
     }
@@ -362,11 +362,11 @@ class DevicePopupViewController: NSViewController {
             (response, error) -> Void
             in
             if (error != nil) {
-                println(error)
+                print(error)
             } else {
                 self.displayTrackInfo()
             }
-            println(response)
+            print(response)
         })
     }
     
@@ -385,7 +385,7 @@ class DevicePopupViewController: NSViewController {
     */
     func quitPressed(sender: AnyObject)
     {
-        println("Application Shutting Down...")
+        print("Application Shutting Down...")
         NSApplication.sharedApplication().terminate(self)
     }
 

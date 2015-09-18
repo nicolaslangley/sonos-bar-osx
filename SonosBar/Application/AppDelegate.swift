@@ -41,7 +41,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     /**
     Key-Value Observer for allDevices key
     */
-    override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>)
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>)
     {
         if (context == &allDevicesContext)
         {
@@ -49,7 +49,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
             sonosCoordinators = sonosManager?.coordinators as! [SonosController]
             if (sonosCoordinators.isEmpty)
             {
-                println("No devices found")
+                print("No devices found")
                 // Set up the menubar
                 self.currentDevice = nil
                 self.menuBarSetup()
@@ -61,7 +61,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                     if (coordinator.name != "BRIDGE")
                     {
                         self.currentDevice = coordinator
-                        println("Setting default device: \(currentDevice!.name)")
+                        print("Setting default device: \(currentDevice!.name)")
                         self.menuBarSetup()
                         break
                     }
@@ -74,7 +74,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
             if (!(sonosManager?.currentDevice!.name == "BRIDGE"))
             {
                 self.currentDevice = sonosManager?.currentDevice
-                println("Setting current device: \(self.currentDevice!.name)")
+                print("Setting current device: \(self.currentDevice!.name)")
                 self.menuBarSetup()
             }
         }
@@ -85,14 +85,14 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     */
     public func deviceSetup()
     {
-        println("Searching for Sonos devices")
+        print("Searching for Sonos devices")
         // Clear the current list of devices
         self.sonosDevices.removeAll(keepCapacity: false)
         SonosDiscover.discoverControllers {
             (devices, error) -> Void
             in
             if (devices == nil) {
-                println("No devices found")
+                print("No devices found")
                 // Set up the menubar
                 self.currentDevice = nil
                 self.menuBarSetup()
@@ -102,26 +102,26 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                         // Ignore any BRIDGEs
                         continue
                     } else {
-                        var controller: SonosController = SonosController.alloc()
+                        let controller: SonosController = SonosController()
                         controller.ip = device["ip"] as! String
-                        controller.port = Int32((device["port"] as! String).toInt()!)
+                        controller.port = Int32(Int((device["port"] as! String))!)
                         controller.name = device["name"] as! String
                         // Set the current playback device
                         controller.playbackStatus({
                             (playing, response, error)
                             in
                             if (error != nil) {
-                                println(error)
+                                print(error)
                             } else {
                                 if (playing) {
-                                    println("Setting current device: \(controller.name)")
+                                    print("Setting current device: \(controller.name)")
                                     self.currentDevice = controller
                                 } else {
                                     // If we are at the last device and no current device has been set
                                     if (self.currentDevice == nil && device === devices.last!) {
                                         // Set the current device to be first in list
                                         self.currentDevice = self.sonosDevices[0]
-                                        println("Setting current device: \(self.currentDevice!.name)")
+                                        print("Setting current device: \(self.currentDevice!.name)")
                                     }
                                 }
                                 // Set up the menubar
@@ -154,7 +154,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
         // Set view controller depending on if a device is found
         if (self.currentDevice == nil) {
             popover.contentViewController = NoDevicePopupViewController()
-        } else if let cvc = popover.contentViewController as? NoDevicePopupViewController {
+        } else if let _ = popover.contentViewController as? NoDevicePopupViewController {
             popover.contentViewController = DevicePopupViewController()
         } else if (popover.contentViewController == nil) {
             popover.contentViewController = DevicePopupViewController()
@@ -168,7 +168,7 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     */
     func handlePopover(sender: AnyObject)
     {
-        if let statusButton = statusBarItem!.button {
+        if let _ = statusBarItem!.button {
             if popover.shown {
                 popover.close()
             } else {
@@ -183,12 +183,12 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
     func openPopover(sender: AnyObject)
     {
         if let statusButton = statusBarItem!.button {
-            popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask(NSEventMask.LeftMouseDownMask|NSEventMask.RightMouseDownMask,
+            popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask([NSEventMask.LeftMouseDownMask, NSEventMask.RightMouseDownMask],
                 handler: {(event) -> Void
                     in
                     self.closePopover(sender)
             })
-            popover.showRelativeToRect(NSZeroRect, ofView: statusButton, preferredEdge: NSMinYEdge)
+            popover.showRelativeToRect(NSZeroRect, ofView: statusButton, preferredEdge: NSRectEdge.MinY)
         }
     }
     
