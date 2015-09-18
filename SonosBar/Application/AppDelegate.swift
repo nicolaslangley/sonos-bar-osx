@@ -62,7 +62,6 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                     {
                         self.currentDevice = coordinator
                         print("Setting default device: \(currentDevice!.name)")
-                        self.menuBarSetup()
                         break
                     }
                 }
@@ -76,61 +75,6 @@ public class AppDelegate: NSObject, NSApplicationDelegate {
                 self.currentDevice = sonosManager?.currentDevice
                 print("Setting current device: \(self.currentDevice!.name)")
                 self.menuBarSetup()
-            }
-        }
-    }
-    
-    /**
-    Search for Sonos devices and perform setup
-    */
-    public func deviceSetup()
-    {
-        print("Searching for Sonos devices")
-        // Clear the current list of devices
-        self.sonosDevices.removeAll(keepCapacity: false)
-        SonosDiscover.discoverControllers {
-            (devices, error) -> Void
-            in
-            if (devices == nil) {
-                print("No devices found")
-                // Set up the menubar
-                self.currentDevice = nil
-                self.menuBarSetup()
-            } else {
-                for device in devices {
-                    if ((device["name"] as! String) == "BRIDGE") {
-                        // Ignore any BRIDGEs
-                        continue
-                    } else {
-                        let controller: SonosController = SonosController()
-                        controller.ip = device["ip"] as! String
-                        controller.port = Int32(Int((device["port"] as! String))!)
-                        controller.name = device["name"] as! String
-                        // Set the current playback device
-                        controller.playbackStatus({
-                            (playing, response, error)
-                            in
-                            if (error != nil) {
-                                print(error)
-                            } else {
-                                if (playing) {
-                                    print("Setting current device: \(controller.name)")
-                                    self.currentDevice = controller
-                                } else {
-                                    // If we are at the last device and no current device has been set
-                                    if (self.currentDevice == nil && device === devices.last!) {
-                                        // Set the current device to be first in list
-                                        self.currentDevice = self.sonosDevices[0]
-                                        print("Setting current device: \(self.currentDevice!.name)")
-                                    }
-                                }
-                                // Set up the menubar
-                                self.menuBarSetup()
-                            }
-                        })
-                        self.sonosDevices.append(controller)
-                    }
-                }
             }
         }
     }
